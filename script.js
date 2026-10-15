@@ -12,14 +12,33 @@
 'use strict';
 
 /* ==========================================================================
-   1. PWA SERVICE WORKER REGISTRATION
+   1. PWA SERVICE WORKER REGISTRATION & CACHE PURGE
    ========================================================================== */
+// Cancella immediatamente qualsiasi discorso sintetico residuo
+if ('speechSynthesis' in window) {
+  try { window.speechSynthesis.cancel(); } catch (e) {}
+}
+
+// Purga immediata delle vecchie cache dal browser
+if ('caches' in window) {
+  caches.keys().then((keys) => {
+    keys.forEach((key) => {
+      if (key !== 'vegeta-pwa-v3') {
+        console.log('[Cache Purge] Rimuovo cache obsoleta:', key);
+        caches.delete(key);
+      }
+    });
+  });
+}
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register('./sw.js')
+      .register('./sw.js?v=2.0.0')
       .then((reg) => {
         console.log('[PWA] Service Worker attivo. Scope:', reg.scope);
+        // Forza l'aggiornamento immediato del Service Worker
+        reg.update();
       })
       .catch((err) => {
         console.warn('[PWA] Registrazione Service Worker fallita:', err);
@@ -242,7 +261,7 @@ let searchQuery = '';
  */
 async function loadQuotes() {
   try {
-    const res = await fetch('./quotes.json');
+    const res = await fetch('./quotes.json?v=2.0.0');
     if (res.ok) {
       const data = await res.json();
       if (Array.isArray(data) && data.length > 0) {

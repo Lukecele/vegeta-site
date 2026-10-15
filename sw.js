@@ -1,13 +1,13 @@
 // sw.js – Service Worker per Vegeta: Il Principe dei Saiyan PWA
-// Strategia: Cache-First per shell statica, Network-First per risorse dinamiche/esterne
+// Strategia: Network-First per freschezza assoluta, con Cache Fallback per offline
 
-const CACHE_NAME = 'vegeta-pwa-v1';
+const CACHE_NAME = 'vegeta-pwa-v3';
 const STATIC_ASSETS = [
   '/',
-  '/index.html',
-  '/style.css',
-  '/script.js',
-  '/quotes.json',
+  '/index.html?v=2.0.0',
+  '/style.css?v=2.0.0',
+  '/script.js?v=2.0.0',
+  '/quotes.json?v=2.0.0',
   '/manifest.json',
   '/assets/favicon.svg',
   '/assets/icon-192.png',
@@ -17,63 +17,61 @@ const STATIC_ASSETS = [
 ];
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[Vegeta SW] Pre-caching static assets');
+      console.log('[Vegeta SW] Pre-caching v3 static assets');
       return cache.addAll(STATIC_ASSETS);
     })
   );
-  self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
-        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
+        keys.map((key) => {
+          if (key !== CACHE_NAME) {
+            console.log('[Vegeta SW] Eliminazione vecchia cache obsoleta:', key);
+            return caches.delete(key);
+          }
+        })
       );
-    })
+    }).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
+// NETWORK-FIRST per garantire che l'utente veda SEMPRE la versione più recente
 self.addEventListener('fetch', (event) => {
-  const url = new URL(event.request.url);
-
-  // Network-First per richieste esterne (YouTube, Google Fonts, CDN)
-  if (
-    url.origin !== location.origin ||
-    url.hostname.includes('youtube.com') ||
-    url.hostname.includes('googleapis.com') ||
-    url.hostname.includes('gstatic.com') ||
-    url.hostname.includes('unpkg.com')
-  ) {
-    event.respondWith(
-      fetch(event.request)
-        .catch(() => caches.match(event.request))
-    );
+  // Ignora richieste non GET o estensioni Chrome
+  if (event.request.method !== 'GET' || !event.request.url.startsWith('http')) {
     return;
   }
 
-  // Cache-First per gli asset locali del portale
+  const url = new URL(event.request.url);
+
+  // Network-First assoluto per HTML, JS, JSON e CSS locali
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request).then((networkResponse) => {
-        if (
-          networkResponse &&
-          networkResponse.status === 200 &&
-          event.request.method === 'GET'
-        ) {
-          const responseClone = networkResponse.clone();
+    fetch(event.request)
+      .then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200) {
+          const responseToCache = networkResponse.clone();
           caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseClone);
+            cache.put(event.request, responseToCache);
           });
         }
         return networkResponse;
-      });
-    })
+      })
+      .catch(() => {
+        // Fallback offline dalla cache se la rete non è disponibile
+        return caches.match(event.request).then((cachedResponse) => {
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          if (event.request.mode === 'navigate') {
+            return caches.match('/');
+          }
+        });
+      })
   );
 });
