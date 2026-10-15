@@ -5,10 +5,13 @@
 
 Un portale web e Progressive Web App (PWA) moderna, immersiva e curata nella perfezione tecnica, dedicata all'icona immortale di **Vegeta**, Principe di tutti i Saiyan: dalla filosofia del superamento continuo dei propri limiti all'allenamento spietato a 450 volte la gravità terrestre, fino al riconoscimento della vera nobiltà d'animo.
 
-[![PWA Ready](https://img.shields.io/badge/PWA-100%25%20Installable-gold?style=for-the-badge&logo=pwa)](manifest.json)
-[![Offline Supported](https://img.shields.io/badge/Offline-Service%20Worker-cyan?style=for-the-badge&logo=googlechrome)](sw.js)
-[![Web Audio API](https://img.shields.io/badge/Web%20Audio-Scouter%20Synth-purple?style=for-the-badge)](script.js)
+[![Live Demo on Vercel](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel)](https://vegeta-site.vercel.app/)
+[![PWA Ready](https://img.shields.io/badge/PWA-100%25%20Installable-gold?style=for-the-badge&logo=pwa)](https://vegeta-site.vercel.app/manifest.json)
+[![Offline Supported](https://img.shields.io/badge/Offline-Service%20Worker-cyan?style=for-the-badge&logo=googlechrome)](https://vegeta-site.vercel.app/sw.js)
+[![Web Audio API](https://img.shields.io/badge/Web%20Audio-Scouter%20Synth-purple?style=for-the-badge)](https://vegeta-site.vercel.app/script.js)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+
+🌐 **Sito Live su Vercel**: [https://vegeta-site.vercel.app](https://vegeta-site.vercel.app)
 
 ---
 
