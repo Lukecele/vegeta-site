@@ -276,6 +276,32 @@ body {
   100% { box-shadow: 0 0 22px rgba(0, 240, 255, 0.9); }
 }
 
+.nav-scenes-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  color: var(--gold-light);
+  font-family: var(--font-hud);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0.48rem 0.85rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.nav-scenes-btn:hover, .nav-scenes-btn:focus-visible {
+  background: rgba(251, 191, 36, 0.22);
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.5);
+  transform: scale(1.03);
+  color: #ffffff;
+}
+
 .nav-cta {
   display: inline-flex;
   align-items: center;
@@ -1407,6 +1433,19 @@ body {
   color: #ffffff;
 }
 
+.btn-card-action.btn-watch-scene {
+  background: rgba(251, 191, 36, 0.12);
+  border-color: rgba(251, 191, 36, 0.35);
+  color: var(--gold-light);
+}
+
+.btn-card-action.btn-watch-scene:hover {
+  background: var(--gold-primary);
+  border-color: var(--gold-primary);
+  color: #050814;
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.5);
+}
+
 /* ==========================================================================
    VIDEO SCENE CULT (IFRAME HD)
    ========================================================================== */
@@ -2056,6 +2095,103 @@ body {
   border-top: 1px solid var(--border-subtle);
   display: flex;
   justify-content: flex-end;
+}
+
+/* ==========================================================================
+   VIDEO MODAL THEATER
+   ========================================================================== */
+.video-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(5, 8, 20, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 10050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.video-modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.video-modal-container {
+  width: 100%;
+  max-width: 860px;
+  background: var(--bg-card-elevated);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95), 0 0 30px rgba(251, 191, 36, 0.2);
+  transform: translateY(20px) scale(0.97);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.video-modal-overlay.open .video-modal-container {
+  transform: translateY(0) scale(1);
+}
+
+.video-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: rgba(14, 21, 48, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.video-modal-title {
+  font-family: var(--font-royal);
+  font-size: 1rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.video-modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.video-modal-close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.video-modal-body {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-modal-body iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 /* ==========================================================================

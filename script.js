@@ -1,9 +1,10 @@
 /**
  * VEGETA // IL PRINCIPE DEI SAIYAN - ARCHIVIO UFFICIALE
  * Core Engine & Interactive Logic
- * Features: Web Audio API Synthesizer, Ki Aura Canvas, PWA Engine,
- *           Gravity Chamber 450G Simulator, Dynamic Quotes & Search,
- *           Speech Synthesis, GDPR & Legal Modals.
+ * Features: PWA Engine, Ki Aura Canvas, Gravity Chamber 450G Simulator,
+ *           Dynamic Quotes & Real-Time Search, Authentic Video Theater Modal (HD ITA),
+ *           GDPR & Legal Modals.
+ * Zero audio sintetico/robotico: solo scene e doppiaggio originale (Gianluca Iacono).
  * 
  * Ideato e curato da Luca Celebrano (@Lukecele)
  */
@@ -27,133 +28,7 @@ if ('serviceWorker' in navigator) {
 }
 
 /* ==========================================================================
-   2. WEB AUDIO API SYNTHESIZER (ZERO ASSET AUDIO DEPENDENCY)
-   ========================================================================== */
-class SaiyanSoundSystem {
-  constructor() {
-    this.ctx = null;
-    this.initialized = false;
-  }
-
-  init() {
-    if (!this.initialized) {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (AudioCtx) {
-        this.ctx = new AudioCtx();
-        this.initialized = true;
-      }
-    }
-    if (this.ctx && this.ctx.state === 'suspended') {
-      this.ctx.resume();
-    }
-  }
-
-  /**
-   * Scouter HUD Multi-Chirp Sound (Classic DBZ Frequency Modulation)
-   */
-  playScouterBeep() {
-    try {
-      this.init();
-      if (!this.ctx) return;
-
-      const now = this.ctx.currentTime;
-      const freqs = [1760, 2240, 3120];
-
-      freqs.forEach((freq, idx) => {
-        const osc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
-
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(freq, now + idx * 0.08);
-
-        // Bandpass filter to make it sound through a digital scouter lens
-        const filter = this.ctx.createBiquadFilter();
-        filter.type = 'bandpass';
-        filter.frequency.setValueAtTime(freq, now + idx * 0.08);
-        filter.Q.setValueAtTime(8, now + idx * 0.08);
-
-        gain.gain.setValueAtTime(0.001, now + idx * 0.08);
-        gain.gain.exponentialRampToValueAtTime(0.18, now + idx * 0.08 + 0.015);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.08 + 0.06);
-
-        osc.connect(filter);
-        filter.connect(gain);
-        gain.connect(this.ctx.destination);
-
-        osc.start(now + idx * 0.08);
-        osc.stop(now + idx * 0.08 + 0.07);
-      });
-    } catch (e) {
-      console.warn('Audio playback error:', e);
-    }
-  }
-
-  /**
-   * Ki Aura Energy Charge Rumble (Deep Sub-Bass Sweep)
-   */
-  playKiRumble() {
-    try {
-      this.init();
-      if (!this.ctx) return;
-
-      const now = this.ctx.currentTime;
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(45, now);
-      osc.frequency.exponentialRampToValueAtTime(140, now + 0.4);
-      osc.frequency.exponentialRampToValueAtTime(50, now + 0.7);
-
-      gain.gain.setValueAtTime(0.001, now);
-      gain.gain.exponentialRampToValueAtTime(0.22, now + 0.15);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.7);
-
-      osc.connect(gain);
-      gain.connect(this.ctx.destination);
-
-      osc.start(now);
-      osc.stop(now + 0.72);
-    } catch (e) {
-      console.warn('Audio playback error:', e);
-    }
-  }
-
-  /**
-   * Final Flash Blast Powerup Pulse
-   */
-  playPowerSpike() {
-    try {
-      this.init();
-      if (!this.ctx) return;
-
-      const now = this.ctx.currentTime;
-      const osc = this.ctx.createOscillator();
-      const gain = this.ctx.createGain();
-
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(180, now);
-      osc.frequency.exponentialRampToValueAtTime(880, now + 0.35);
-
-      gain.gain.setValueAtTime(0.001, now);
-      gain.gain.exponentialRampToValueAtTime(0.25, now + 0.08);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.4);
-
-      osc.connect(gain);
-      gain.connect(this.ctx.destination);
-
-      osc.start(now);
-      osc.stop(now + 0.42);
-    } catch (e) {
-      console.warn('Audio playback error:', e);
-    }
-  }
-}
-
-const audio = new SaiyanSoundSystem();
-
-/* ==========================================================================
-   3. KI AURA CANVAS PARTICLE SYSTEM
+   2. KI AURA CANVAS PARTICLE SYSTEM (EFFETTO VISIVO AMBIENTALE 60FPS)
    ========================================================================== */
 class KiCanvasSystem {
   constructor(canvasId) {
@@ -161,7 +36,7 @@ class KiCanvasSystem {
     if (!this.canvas) return;
     this.ctx = this.canvas.getContext('2d');
     this.particles = [];
-    this.maxParticles = 48;
+    this.maxParticles = 45;
     this.animId = null;
     this.isVisible = true;
 
@@ -172,12 +47,10 @@ class KiCanvasSystem {
     this.resize();
     window.addEventListener('resize', () => this.resize(), { passive: true });
 
-    // Populate initial particles
     for (let i = 0; i < this.maxParticles; i++) {
       this.particles.push(this.createParticle(true));
     }
 
-    // Pause when tab not visible to save power
     document.addEventListener('visibilitychange', () => {
       this.isVisible = !document.hidden;
       if (this.isVisible) {
@@ -220,7 +93,6 @@ class KiCanvasSystem {
       p.x += Math.sin(p.angle) * 0.5 + p.speedX;
       p.angle += p.sparkleSpeed;
 
-      // Glow circle
       this.ctx.beginPath();
       const grad = this.ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 2.2);
       grad.addColorStop(0, `rgba(${p.color}, ${p.opacity})`);
@@ -229,13 +101,11 @@ class KiCanvasSystem {
       this.ctx.arc(p.x, p.y, p.radius * 2.2, 0, Math.PI * 2);
       this.ctx.fill();
 
-      // Core spark
       this.ctx.beginPath();
       this.ctx.arc(p.x, p.y, p.radius * 0.7, 0, Math.PI * 2);
       this.ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity * 0.9})`;
       this.ctx.fill();
 
-      // Respawn at bottom when out of screen
       if (p.y < -30 || p.x < -30 || p.x > this.width + 30) {
         this.particles[i] = this.createParticle(false);
       }
@@ -246,7 +116,7 @@ class KiCanvasSystem {
 }
 
 /* ==========================================================================
-   4. CURATED QUOTES DATA & DYNAMIC RENDERING ENGINE
+   3. CURATED QUOTES DATA & DYNAMIC RENDERING (ZERO AUDIO ROBOTICO)
    ========================================================================== */
 const FALLBACK_QUOTES = [
   {
@@ -255,7 +125,9 @@ const FALLBACK_QUOTES = [
     category: "Orgoglio & Dignità",
     saga: "Saga di Majin Bu",
     icon: "flame",
-    powerLevel: "100.000.000+"
+    powerLevel: "100.000.000+",
+    videoId: "QC2nTxGf7lg",
+    videoTitle: "Vegeta si ribella a Babidi – Doppiaggio ITA Gianluca Iacono"
   },
   {
     quote: "Addio Bulma, addio Trunks... e anche a te, Kakaroth. Questa volta non combatto per me stesso.",
@@ -263,7 +135,9 @@ const FALLBACK_QUOTES = [
     category: "Il Sacrificio di Majin Bu",
     saga: "Saga di Majin Bu",
     icon: "heart",
-    powerLevel: "Incalcolabile"
+    powerLevel: "Incalcolabile",
+    videoId: "m246vcU1vl4",
+    videoTitle: "Il Sacrificio di Majin Vegeta – Doppiaggio ITA Gianluca Iacono"
   },
   {
     quote: "Sei tu il numero uno, Kakaroth! Tu non combatti per vincere, ma per superare te stesso. È per questo che non sono mai riuscito a batterti.",
@@ -271,7 +145,9 @@ const FALLBACK_QUOTES = [
     category: "L'Eterna Rivalità con Kakaroth",
     saga: "Saga di Majin Bu",
     icon: "trophy",
-    powerLevel: "Supremo"
+    powerLevel: "Supremo",
+    videoId: "a2JuOpsz-1c",
+    videoTitle: "Vegeta riconosce che Goku è il numero uno – Doppiaggio ITA Gianluca Iacono"
   },
   {
     quote: "Io non ho mai avuto maestri che mi abbiano regalato qualcosa. Tutto ciò che possiedo l'ho strappato con il sangue, con la rabbia e con un allenamento spietato a 450 volte la gravità terrestre!",
@@ -279,7 +155,9 @@ const FALLBACK_QUOTES = [
     category: "Allenamento & Determinazione",
     saga: "Saga degli Androidi",
     icon: "zap",
-    powerLevel: "80.000.000"
+    powerLevel: "80.000.000",
+    videoId: "KaMvJaBRAuc",
+    videoTitle: "Vegeta si trasforma per la prima volta in Super Saiyan – Doppiaggio ITA HD"
   },
   {
     quote: "I limiti esistono soltanto per coloro che hanno paura di superarli. Un principe guerriero abbatte le proprie barriere a mani nude!",
@@ -295,7 +173,9 @@ const FALLBACK_QUOTES = [
     category: "Super Saiyan & Limiti",
     saga: "Saga di Cell",
     icon: "sparkles",
-    powerLevel: "Massima Potenza"
+    powerLevel: "Massima Potenza",
+    videoId: "m6NwuTNxDZs",
+    videoTitle: "Lampo Finale (Final Flash) contro Cell – Doppiaggio ITA Gianluca Iacono"
   },
   {
     quote: "Come osi... toccare la mia BULMAAAAA?!",
@@ -303,7 +183,9 @@ const FALLBACK_QUOTES = [
     category: "La Famiglia & L'Evoluzione",
     saga: "Dragon Ball Super",
     icon: "flame",
-    powerLevel: "Rabbia Divina"
+    powerLevel: "Rabbia Divina",
+    videoId: "hesiDXQuUP4",
+    videoTitle: "LA MIA BULMAAA!! La furia contro Beerus – Doppiaggio ITA Gianluca Iacono"
   },
   {
     quote: "Non getterò mai via ciò che sono! Non abbandonerò il mio orgoglio per ottenere un potere a buon mercato. Io sono Vegeta, il Principe dei Saiyan, e manterrò la mia promessa con la mia forza!",
@@ -311,7 +193,9 @@ const FALLBACK_QUOTES = [
     category: "Orgoglio & Dignità",
     saga: "Dragon Ball Super",
     icon: "crown",
-    powerLevel: "Blue Evolution"
+    powerLevel: "Blue Evolution",
+    videoId: "X3lleuQZwCA",
+    videoTitle: "Vegeta vs Toppo: Super Saiyan Blue Evolution – Doppiaggio ITA Gianluca Iacono"
   },
   {
     quote: "Non c'è niente di vergognoso nel cadere. La vera vergogna è rimanere a terra a leccarsi le ferite quando la battaglia non è ancora finita.",
@@ -343,7 +227,9 @@ const FALLBACK_QUOTES = [
     category: "La Famiglia & L'Evoluzione",
     saga: "Saga di Majin Bu",
     icon: "heart",
-    powerLevel: "Amore di Padre"
+    powerLevel: "Amore di Padre",
+    videoId: "m246vcU1vl4",
+    videoTitle: "L'abbraccio a Trunks e il Sacrificio di Majin Vegeta – Doppiaggio ITA Gianluca Iacono"
   }
 ];
 
@@ -370,18 +256,16 @@ async function loadQuotes() {
 }
 
 /**
- * Renderizza le card delle citazioni con filtri e ricerca
+ * Renderizza le card delle citazioni con filtri, ricerca e scene autentiche
  */
 function renderQuotes() {
   const container = document.getElementById('quote-list');
   if (!container) return;
 
   const filtered = allQuotes.filter((item) => {
-    // Filtro per categoria
     const matchesCategory =
       activeCategoryFilter === 'all' || item.category === activeCategoryFilter;
 
-    // Filtro per ricerca testuale
     const query = searchQuery.trim().toLowerCase();
     const matchesSearch =
       query === '' ||
@@ -408,6 +292,15 @@ function renderQuotes() {
   container.innerHTML = filtered
     .map((item, index) => {
       const iconName = item.icon || 'quote';
+      const hasVideo = !!item.videoId;
+
+      const videoButton = hasVideo
+        ? `<button class="btn-card-action btn-watch-scene" data-video-id="${escapeAttribute(item.videoId)}" data-video-title="${escapeAttribute(item.videoTitle || item.quote)}" title="Guarda la scena originale in HD ITA con la voce di Gianluca Iacono">
+             <i data-lucide="play-circle"></i>
+             <span>Scena HD ITA</span>
+           </button>`
+        : '';
+
       return `
         <article class="quote-card" data-index="${index}">
           <div class="qc-header">
@@ -429,14 +322,11 @@ function renderQuotes() {
           </p>
 
           <div class="qc-actions">
+            ${videoButton}
+
             <button class="btn-card-action btn-copy-quote" data-quote="${escapeAttribute(item.quote)}" data-context="${escapeAttribute(item.context)}" title="Copia citazione">
               <i data-lucide="copy"></i>
               <span>Copia</span>
-            </button>
-
-            <button class="btn-card-action btn-speak-quote" data-quote="${escapeAttribute(item.quote)}" title="Ascolta con voce sintetica">
-              <i data-lucide="volume-2"></i>
-              <span>Ascolta</span>
             </button>
 
             <button class="btn-card-action btn-share-quote" data-quote="${escapeAttribute(item.quote)}" data-context="${escapeAttribute(item.context)}" title="Condividi">
@@ -455,34 +345,36 @@ function renderQuotes() {
 }
 
 /* ==========================================================================
-   5. ACTIONS: COPIA, ASCOLTO (SPEECH SYNTHESIS) & CONDIVISIONE
+   4. ACTIONS: COPIA, CONDIVISIONE & THEATER MODAL PER SCENE REALI (HD ITA)
    ========================================================================== */
 function setupQuoteActions() {
   const container = document.getElementById('quote-list');
   if (!container) return;
 
   container.addEventListener('click', (e) => {
-    // 1. Copia negli appunti
+    // 1. Guarda Scena Originale HD ITA
+    const watchBtn = e.target.closest('.btn-watch-scene');
+    if (watchBtn) {
+      const videoId = watchBtn.getAttribute('data-video-id');
+      const videoTitle = watchBtn.getAttribute('data-video-title');
+      if (videoId) {
+        openVideoModal(videoId, videoTitle);
+      }
+      return;
+    }
+
+    // 2. Copia negli appunti
     const copyBtn = e.target.closest('.btn-copy-quote');
     if (copyBtn) {
       const quote = copyBtn.getAttribute('data-quote');
       const context = copyBtn.getAttribute('data-context');
-      const fullText = `«${quote}»\n– ${context}\n\n[Vegeta // Il Principe dei Saiyan: https://vegeta.celebrano.com]`;
+      const fullText = `«${quote}»\n– ${context}\n\n[Vegeta // Il Principe dei Saiyan: https://vegeta-site.vercel.app]`;
 
       navigator.clipboard.writeText(fullText).then(() => {
-        audio.playScouterBeep();
-        showToast('Citazione copiata con successo negli appunti!', 'check-circle');
+        showToast('Citazione copiata negli appunti!', 'check-circle');
       }).catch(() => {
         showToast('Errore durante la copia della citazione', 'alert-circle');
       });
-      return;
-    }
-
-    // 2. Ascolta con Web Speech Synthesis
-    const speakBtn = e.target.closest('.btn-speak-quote');
-    if (speakBtn) {
-      const quote = speakBtn.getAttribute('data-quote');
-      speakQuote(quote);
       return;
     }
 
@@ -508,39 +400,73 @@ function setupQuoteActions() {
   });
 }
 
-function speakQuote(text) {
-  if (!('speechSynthesis' in window)) {
-    showToast('Sintesi vocale non supportata dal tuo browser', 'volume-x');
-    return;
-  }
-
-  window.speechSynthesis.cancel(); // Arresta eventuale discorso in corso
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'it-IT';
-  utterance.rate = 0.92; // Tono fiero e misurato
-  utterance.pitch = 0.88; // Timbro più profondo e autoritario
-
-  // Prova a selezionare una voce italiana naturale se disponibile
-  const voices = window.speechSynthesis.getVoices();
-  const italianVoice = voices.find((v) => v.lang.startsWith('it'));
-  if (italianVoice) {
-    utterance.voice = italianVoice;
-  }
-
-  audio.playKiRumble();
-  showToast('Riproduzione vocale in corso...', 'volume-2');
-  window.speechSynthesis.speak(utterance);
-}
-
 function copyToClipboardDirect(text) {
   navigator.clipboard.writeText(text).then(() => {
-    audio.playScouterBeep();
     showToast('Testo copiato per la condivisione!', 'share-2');
   });
 }
 
 /* ==========================================================================
-   6. GRAVITY CHAMBER 450G & SCOUTER SIMULATOR ENGINE
+   5. VIDEO THEATER MODAL (DOPIAGGIO ORIGINALE ITALIANO)
+   ========================================================================== */
+function setupVideoModal() {
+  const modal = document.getElementById('videoModalOverlay');
+  const closeBtn = document.getElementById('closeVideoModal');
+  if (!modal) return;
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeVideoModal);
+  }
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeVideoModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closeVideoModal();
+    }
+  });
+}
+
+function openVideoModal(videoId, title) {
+  const modal = document.getElementById('videoModalOverlay');
+  const iframe = document.getElementById('videoModalIframe');
+  const titleEl = document.getElementById('videoModalTitleText');
+
+  if (!modal || !iframe) return;
+
+  if (titleEl && title) {
+    titleEl.textContent = title;
+  }
+
+  // Carica il video originale con autoplay
+  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal() {
+  const modal = document.getElementById('videoModalOverlay');
+  const iframe = document.getElementById('videoModalIframe');
+
+  if (!modal) return;
+
+  // Scarica l'iframe per arrestare immediatamente l'audio del video
+  if (iframe) {
+    iframe.src = '';
+  }
+
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+/* ==========================================================================
+   6. GRAVITY CHAMBER 450G & SCOUTER SIMULATOR (ZERO ROBOTIC NOISE)
    ========================================================================== */
 function setupGravityChamber() {
   const gravButtons = document.querySelectorAll('.gravity-buttons .grav-btn');
@@ -559,7 +485,7 @@ function setupGravityChamber() {
 
   let currentG = 450;
 
-  // Selezione bottoni gravità
+  // Bottoni gravità
   gravButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
       gravButtons.forEach((b) => {
@@ -571,7 +497,6 @@ function setupGravityChamber() {
 
       currentG = parseInt(btn.getAttribute('data-g'), 10) || 450;
       updateGravityLabel();
-      audio.playScouterBeep();
     });
   });
 
@@ -606,32 +531,25 @@ function setupGravityChamber() {
     });
   }
 
-  // Bottone Scansione Scouter
+  // Bottone Scansione Scouter (puro calcolo visivo e fluido)
   if (scanPowerBtn) {
     scanPowerBtn.addEventListener('click', () => {
-      audio.playKiRumble();
-      audio.playScouterBeep();
-
       if (hudStatus) {
         hudStatus.textContent = 'CALCOLO KI IN CORSO...';
         hudStatus.style.color = 'var(--gold-primary)';
       }
 
-      // Disabilita temporaneamente il bottone durante l'animazione
       scanPowerBtn.disabled = true;
 
       const hours = parseInt(hoursInput.value, 10) || 8;
       const grit = parseInt(gritInput.value, 10) || 90;
 
-      // Formula dinamica Potenza di Combattimento Saiyan
-      // Base: 18.000 (Vegeta Saga Saiyan)
       const gFactor = currentG / 100;
       const hoursFactor = Math.pow(hours / 8, 1.4);
       const gritFactor = Math.pow(grit / 50, 1.8);
 
       const targetPower = Math.round(18000 * gFactor * hoursFactor * gritFactor * 12.5);
 
-      // Animazione del contatore digitale numerico
       let currentVal = Math.round(targetPower * 0.15);
       const step = Math.max(1, Math.round(targetPower / 25));
       const interval = setInterval(() => {
@@ -650,20 +568,17 @@ function setupGravityChamber() {
 
   function finishScan(power, hours, grit, g) {
     scanPowerBtn.disabled = false;
-    audio.playPowerSpike();
 
     if (hudStatus) {
       hudStatus.textContent = 'ANALISI COMPLETATA // RISULTATO';
       hudStatus.style.color = 'var(--ki-blue)';
     }
 
-    // Calcolo barra percentuale HUD (max 3.500.000)
     const percentage = Math.min(100, Math.max(15, Math.round((power / 2500000) * 100)));
     if (hudBarFill) {
       hudBarFill.style.width = `${percentage}%`;
     }
 
-    // Giudizio personalizzato di Vegeta
     let verdict = '';
     if (g < 300 || hours < 4 || grit < 50) {
       verdict = `«Patetico! Solo <strong>${power.toLocaleString('it-IT')}</strong> punti combattimento?! Con questo ritmo persino Radish ti riderebbe in faccia! Un vero Saiyan non si accontenta di mezze misure: aumenta la gravità ed elimina ogni debolezza dalla tua mente!»`;
@@ -692,8 +607,6 @@ function setupDailyQuote() {
   if (!dailyText || !newBtn) return;
 
   newBtn.addEventListener('click', () => {
-    audio.playScouterBeep();
-
     dailyText.style.opacity = '0';
     dailyText.style.transform = 'translateY(8px)';
     if (dailyContext) {
@@ -721,14 +634,13 @@ function setupDailyQuote() {
 }
 
 /* ==========================================================================
-   8. FILTRI CATEGORIA & RICERCA TEMPESTIVA
+   8. FILTRI CATEGORIA & RICERCA IN TEMPO REALE
    ========================================================================== */
 function setupSearchAndFilters() {
   const searchInput = document.getElementById('quoteSearch');
   const clearBtn = document.getElementById('clearSearchBtn');
   const filterBtns = document.querySelectorAll('#categoryFilters .filter-btn');
 
-  // Input di ricerca in tempo reale
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       searchQuery = e.target.value;
@@ -739,7 +651,6 @@ function setupSearchAndFilters() {
     });
   }
 
-  // Tasto per cancellare la ricerca
   if (clearBtn && searchInput) {
     clearBtn.addEventListener('click', () => {
       searchInput.value = '';
@@ -750,7 +661,6 @@ function setupSearchAndFilters() {
     });
   }
 
-  // Bottoni di filtro categoria
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       filterBtns.forEach((b) => {
@@ -761,7 +671,6 @@ function setupSearchAndFilters() {
       btn.setAttribute('aria-selected', 'true');
 
       activeCategoryFilter = btn.getAttribute('data-filter') || 'all';
-      audio.playScouterBeep();
       renderQuotes();
     });
   });
@@ -784,7 +693,6 @@ function setupMobileDrawer() {
     overlay.classList.add('open');
     toggleBtn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
-    audio.playScouterBeep();
   }
 
   function closeDrawer() {
@@ -830,7 +738,6 @@ function setupCookieBanner() {
   const currentConsent = localStorage.getItem(CONSENT_KEY);
 
   if (!currentConsent) {
-    // Mostra il banner con un leggero delay per fluidità di caricamento
     setTimeout(() => {
       banner.classList.add('visible');
     }, 700);
@@ -840,7 +747,6 @@ function setupCookieBanner() {
     acceptBtn.addEventListener('click', () => {
       localStorage.setItem(CONSENT_KEY, JSON.stringify({ status: 'accepted', timestamp: Date.now() }));
       banner.classList.remove('visible');
-      audio.playScouterBeep();
       showToast('Preferenze privacy salvate: Consenso completo', 'check-circle');
     });
   }
@@ -872,7 +778,6 @@ function setupLegalModal() {
     modalOverlay.classList.add('open');
     modalOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    audio.playScouterBeep();
   }
 
   function closeModal() {
@@ -913,7 +818,6 @@ function setupBackToTop() {
       top: 0,
       behavior: 'smooth'
     });
-    audio.playScouterBeep();
   });
 }
 
@@ -929,7 +833,6 @@ function showToast(message, iconName = 'check-circle') {
 
   toastMsg.textContent = message;
 
-  // Sostituisce l'icona interna del toast se presente
   const oldIcon = toast.querySelector('.toast-icon');
   if (oldIcon) {
     const newIcon = document.createElement('i');
@@ -951,21 +854,7 @@ function showToast(message, iconName = 'check-circle') {
 }
 
 /* ==========================================================================
-   14. NAVBAR SCOUTER SOUND BUTTON
-   ========================================================================== */
-function setupNavbarAudioButton() {
-  const soundBtn = document.getElementById('scouterSoundBtn');
-  if (!soundBtn) return;
-
-  soundBtn.addEventListener('click', () => {
-    audio.playKiRumble();
-    audio.playScouterBeep();
-    showToast('Scouter attivo: Scansione Ki nell\'area!', 'radio');
-  });
-}
-
-/* ==========================================================================
-   15. UTILITIES: SANITIZZAZIONE HTML & ATTRIBUTI
+   14. UTILITIES: SANITIZZAZIONE HTML & ATTRIBUTI
    ========================================================================== */
 function escapeHtml(str) {
   if (!str) return '';
@@ -986,15 +875,13 @@ function escapeAttribute(str) {
 }
 
 /* ==========================================================================
-   16. BOOTSTRAP APPLICATIVO
+   15. BOOTSTRAP APPLICATIVO
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Inizializzazione Canvas Ki Aura
   new KiCanvasSystem('kiCanvas');
 
-  // 2. Setup Moduli Interattivi
-  setupNavbarAudioButton();
   setupMobileDrawer();
+  setupVideoModal();
   setupGravityChamber();
   setupDailyQuote();
   setupSearchAndFilters();
@@ -1003,10 +890,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setupLegalModal();
   setupBackToTop();
 
-  // 3. Caricamento Citazioni
   loadQuotes();
 
-  // 4. Inizializzazione Icone Lucide nel DOM
   if (window.lucide) {
     lucide.createIcons();
   }

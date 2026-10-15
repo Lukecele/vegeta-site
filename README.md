@@ -8,7 +8,7 @@ Un portale web e Progressive Web App (PWA) moderna, immersiva e curata nella per
 [![Live Demo on Vercel](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel)](https://vegeta-site.vercel.app/)
 [![PWA Ready](https://img.shields.io/badge/PWA-100%25%20Installable-gold?style=for-the-badge&logo=pwa)](https://vegeta-site.vercel.app/manifest.json)
 [![Offline Supported](https://img.shields.io/badge/Offline-Service%20Worker-cyan?style=for-the-badge&logo=googlechrome)](https://vegeta-site.vercel.app/sw.js)
-[![Web Audio API](https://img.shields.io/badge/Web%20Audio-Scouter%20Synth-purple?style=for-the-badge)](https://vegeta-site.vercel.app/script.js)
+[![Doppiaggio ITA](https://img.shields.io/badge/Audio-Gianluca%20Iacono%20(ITA)-red?style=for-the-badge)](https://vegeta-site.vercel.app/#video)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
 🌐 **Sito Live su Vercel**: [https://vegeta-site.vercel.app](https://vegeta-site.vercel.app)
@@ -35,10 +35,12 @@ Un portale web e Progressive Web App (PWA) moderna, immersiva e curata nella per
 - Slider per ore di focus quotidiano e tenacia mentale.
 - **Calcolo dinamico del Livello di Combattimento (Battle Power)** con conteggio numerico animato ad alta frequenza.
 - Giudizio personalizzato e implacabile di Vegeta in base al punteggio ottenuto.
-- Indicatore grafico HUD a barre olografiche e cornici digitali retro-futuristiche.
+- Indicatore grafico HUD a barre olografiche e cornici digitali retro-futuristiche, totalmente silenzioso ed elegante.
 
-### 4. 📜 Database Citazioni Storiche & Motore di Ricerca (`quotes.json`)
+### 4. 📜 Database Citazioni Storiche & Player Scene Cult Reali (`quotes.json`)
 - Raccolta integrale delle battute e dei monologhi più profondi in lingua italiana (doppiaggio storico di Gianluca Iacono).
+- **Zero audio robotico o sintetico**: rimossi completamente i sintetizzatori vocali meccanici del browser.
+- **Player Video Theater Integrato**: ogni massima celebre è dotata del pulsante `Scena HD ITA`, che apre un player modale per ascoltare e vedere lo spezzone video autentico.
 - **Ricerca in tempo reale** istantanea per parola chiave (es. *orgoglio*, *Kakaroth*, *450G*, *Cell*, *limiti*).
 - **Filtri tematici**:
   - *Orgoglio & Dignità*
@@ -48,25 +50,20 @@ Un portale web e Progressive Web App (PWA) moderna, immersiva e curata nella per
   - *Allenamento & Determinazione*
   - *La Famiglia & L'Evoluzione*
 - Card interattive con indicatore di Saga e Battle Power.
-- **Copia rapida negli appunti** con notifica Toast personalizzata.
-- **Sintesi vocale integrata (Web Speech API)** con modulazione profonda in lingua italiana.
+- **Copia rapida negli appunti** con notifica Toast fluida.
 - Supporto nativo alla **Web Share API**.
 
-### 5. 🔊 Sintetizzatore Sonoro Web Audio API (Zero Dipendenze Esterne)
-- Nessun file MP3 esterno pesante o bloccato da CORS.
-- Sintesi FM in tempo reale di:
-  - **Scouter Digital Chirp**: triplo impulso sinusoidale/sawtooth ad alta frequenza modulata.
-  - **Ki Aura Sub-Bass Rumble**: sweep a bassa frequenza per la carica energetica.
-  - **Final Flash Blast Spike**: rilascio energetico ad alta risonanza.
-
-### 6. 🎬 Hub Video Scene Cult HD ITA
-- Selezione curata dei 4 momenti leggendari doppiati in italiano con embed ottimizzato YouTube:
+### 5. 🎬 Hub Video 7 Scene Cult HD ITA (Doppiaggio Ufficiale Mediaset)
+- Selezione curata dei 7 momenti leggendari con embed ottimizzato YouTube:
   1. *Vegeta si ribella al controllo mentale di Babidi* («C'è una sola cosa che un Saiyan conserva...»)
   2. *L'addio a Trunks e il Sacrificio contro Majin Bu* («Questa volta non combatto per me stesso»)
   3. *Il Lampo Finale contro Perfect Cell (Final Flash)*
-  4. *La confessione suprema: «Forza Kakaroth, sei tu il numero uno!»*
+  4. *La prima trasformazione a 450G tra le meteore* («Tutto ciò che ho l'ho strappato a 450G!»)
+  5. *«La Mia Bulmaaa!» contro Lord Beerus*
+  6. *Vegeta vs Toppo: Super Saiyan Blue Evolution* («Non getterò mai via ciò che sono!»)
+  7. *La confessione suprema: «Forza Kakaroth, sei tu il numero uno!»*
 
-### 7. 📱 PWA 100% Conforme ai Massimi Standard
+### 6. 📱 PWA 100% Conforme ai Massimi Standard
 - **Manifest completo (`manifest.json`)**:
   - `id: "/"` e `scope: "/"` definiti esplicitamente.
   - Icone separate per `purpose: "any"` e `purpose: "maskable"` (192x192 e 512x512).
@@ -77,7 +74,7 @@ Un portale web e Progressive Web App (PWA) moderna, immersiva e curata nella per
   - Fallback su Network per risorse esterne (Google Fonts, YouTube).
   - Navigazione offline fluida e installabile come App nativa su Desktop (Chrome/Edge/macOS) e Mobile (iOS/Android).
 
-### 8. 🛡️ Conformità Normativa, Privacy & GDPR
+### 7. 🛡️ Conformità Normativa, Privacy & GDPR
 - **Cookie Banner GDPR**: Memorizzazione sicura del consenso in `localStorage` (`vegeta_cookie_consent_v1`) con opzioni «Accetto e Chiudi» e «Solo Tecnici».
 - **Informativa Legale & Fair Use**: Dettaglio normativo su titolarità del progetto no-profit e citazione ai sensi dell'art. 70 della Legge 633/1941 sul diritto d'autore.
 - **Zero Profilazione**: Nessun tracker invasivo, nessun pixel pubblicitario o vendita dati.
