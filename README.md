@@ -132,6 +132,10 @@ npx serve vegeta-site
 
 ---
 
-## ⚖️ Note Legali & Diritto d'Autore
+## ⚖️ Note Legali, Proprietà Intellettuale & Diritto d'Autore
 
-Questo sito web è un'opera no-profit ad uso culturale, artistico, commemorativo e didattico. I marchi, i nomi dei personaggi e i riferimenti multimediali appartengono ai rispettivi proprietari. I contenuti testuali e le citazioni sono inclusi in conformità con l'art. 70 della Legge 633/1941 e con i principi internazionali del Fair Use.
+- **Natura del Progetto:** Questo sito web è un'opera no-profit ad uso culturale, artistico, commemorativo e didattico, priva di qualsiasi finalità commerciale o scopo di lucro.
+- **Titolarità del Personaggio e Marchi:** Il personaggio "Vegeta", i nomi correlati ("Dragon Ball", "Saiyan", "Capsule Corp") e i relativi marchi appartengono a **Bird Studio** / **Akira Toriyama Estate**, **Shueisha Inc.** e **Toei Animation Co., Ltd.**. Il richiamo a tali elementi avviene a titolo meramente descrittivo, identificativo e commemorativo (*nominative fair use*).
+- **Diritto di Citazione (Art. 70 L. 633/1941):** Le frasi, i monologhi e i riferimenti narrativi sono riportati in conformità all'art. 70 della Legge 633/1941 sul diritto d'autore e ai principi internazionali del *Fair Use* (17 U.S.C. § 107), per finalità illustrative e di discussione culturale.
+- **Incorporamento Video (Iframe):** I video incorporati sono riprodotti tramite player ufficiale YouTube in conformità alla giurisprudenza della Corte di Giustizia dell'Unione Europea (*sentenze Svensson C-466/12 e BestWater C-348/13*). Nessun file multimediale è ospitato illegalmente sui server del sito.
+- **Notice & Take Down:** I titolari dei diritti possono richiedere in qualsiasi momento la modifica o rimozione tempestiva scrivendo a `luca.celebrano1@gmail.com`.
