@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Vegeta | «C'è una sola cosa che un Saiyan conserva sempre: il suo Orgoglio!» – Il Principe dei Guerrieri</title>
+
+  <!-- SEO & Accessibility Metadata -->
+  <meta name="description" content="«Puoi controllare il mio corpo e la mia mente, ma c'è una cosa che un Saiyan conserva sempre: il suo orgoglio!» Il portale definitivo sulla filosofia, l'addestramento estremo a 450G, le scene cult e le citazioni motivazionali di Vegeta." />
+  <meta name="keywords" content="Vegeta, Principe dei Saiyan, Dragon Ball Z, Majin Vegeta, orgoglio saiyan, Gianluca Iacono, Final Flash, Akira Toriyama, Super Saiyan Blue, motivazionale, scouter over 9000" />
+  <meta name="author" content="Luca Celebrano (@Lukecele)" />
+  <meta name="theme-color" content="#050814" />
+  <link rel="canonical" href="https://vegeta-site.vercel.app/" />
+
+  <!-- PWA Manifest & Icons -->
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Vegeta" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vegeta-site.vercel.app/" />
+  <meta property="og:title" content="Vegeta | Il Manifesto dell'Orgoglio Saiyan" />
+  <meta property="og:description" content="«C'è una sola cosa che un Saiyan conserva sempre: il suo orgoglio!» La parabola del guerriero indomabile: disciplina, camera gravitazionale e superamento dei limiti." />
+  <meta property="og:image" content="https://vegeta-site.vercel.app/assets/og-image.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="it_IT" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://vegeta-site.vercel.app/" />
+  <meta name="twitter:title" content="Vegeta | Il Principe dei Saiyan" />
+  <meta name="twitter:description" content="«I limiti esistono soltanto per chi ha paura di superarli.» Il portale dedicato all'orgoglio e alla resilienza di Vegeta." />
+  <meta name="twitter:image" content="https://vegeta-site.vercel.app/assets/og-image.svg" />
+
+  <!-- Performance Fonts: Cinzel, Plus Jakarta Sans, Orbitron (HUD) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Ambient Atmospheric Backing Glows -->
+  <div class="glow-orb orb-royal-blue" aria-hidden="true"></div>
+  <div class="glow-orb orb-ki-gold" aria-hidden="true"></div>
+  <div class="glow-orb orb-majin-purple" aria-hidden="true"></div>
+
+  <!-- Interactive Ki Aura Lightning Canvas -->
+  <canvas id="kiCanvas" class="ki-canvas" aria-hidden="true"></canvas>
+
+  <!-- Navigation -->
+  <nav class="nav-container" aria-label="Navigazione principale">
+    <div class="nav-content">
+      <a href="#" class="nav-logo" aria-label="Torna in cima">
+        <img src="assets/favicon.svg" alt="Stemma Reale della Dinastia Saiyan" width="46" height="46" class="logo-img" />
+        <div class="logo-text-group">
+          <span class="logo-title">VEGETA</span>
+          <span class="logo-sub">Il Principe dei Saiyan</span>
+        </div>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#discorso-orgoglio" class="nav-link special-link"><i data-lucide="flame"></i> Il Discorso dell'Orgoglio</a>
+        <a href="#metamorfosi" class="nav-link">Le 5 Metamorfosi</a>
+        <a href="#gravity-chamber" class="nav-link">Gravity 450G & Scouter</a>
+        <a href="#citazioni" class="nav-link">Frasi Iconiche</a>
+        <a href="#video" class="nav-link">Scene Cult (HD ITA)</a>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Interactive Scouter Sound Button -->
+        <button class="scouter-sound-btn" id="scouterSoundBtn" title="Emetti scansione Scouter e carica Ki" aria-label="Attiva audio Scouter">
+          <i data-lucide="radio"></i>
+          <span>Scouter Beep</span>
+        </button>
+
+        <a href="#gravity-chamber" class="nav-cta">
+          <i data-lucide="zap"></i>
+          <span>Testa il tuo Livello</span>
+        </a>
+
+        <!-- Mobile Hamburger Button -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Apri o chiudi il menu di navigazione" aria-expanded="false" aria-controls="mobileDrawer">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer & Overlay -->
+  <div class="mobile-drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+  <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Menu di navigazione mobile">
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <img src="assets/favicon.svg" alt="Stemma Reale Saiyan" width="36" height="36" />
+        <span>Vegeta // Royal Saiyan</span>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Chiudi menu">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+
+    <div class="drawer-links">
+      <a href="#discorso-orgoglio" class="drawer-link"><i data-lucide="flame"></i> Il Discorso dell'Orgoglio</a>
+      <a href="#metamorfosi" class="drawer-link"><i data-lucide="shield"></i> Le 5 Metamorfosi del Principe</a>
+      <a href="#gravity-chamber" class="drawer-link"><i data-lucide="target"></i> Gravity Chamber 450G & Scouter</a>
+      <a href="#citazioni" class="drawer-link"><i data-lucide="quote"></i> Archivio Frasi Leggendarie</a>
+      <a href="#video" class="drawer-link"><i data-lucide="play-circle"></i> Scene Cult & Video HD ITA</a>
+      <a href="#daily-quote" class="drawer-link"><i data-lucide="sparkles"></i> Pillola di Orgoglio Quotidiano</a>
+    </div>
+
+    <div class="drawer-footer">
+      <p class="drawer-quote">«C'è una sola cosa che un Saiyan conserva sempre: il suo orgoglio!»</p>
+      <span class="drawer-tag">⚡ Nessun limite potrà mai fermarmi</span>
+    </div>
+  </div>
+
+  <!-- HERO SECTION: IL MANIFESTO DELL'ORGOGLIO SAIYAN (MAJIN VEGETA) -->
+  <header class="hero-saiyan" id="discorso-orgoglio">
+    <div class="container">
+      <div class="saiyan-badge-wrap">
+        <div class="saiyan-badge">
+          <i data-lucide="flame" class="fire-icon"></i>
+          <span>La Scena Madre dell'Autodeterminazione • Saga di Majin Bu (1994)</span>
+        </div>
+      </div>
+
+      <h1 class="saiyan-headline">
+        «PUOI CONTROLLARE IL MIO CORPO E LA MIA MENTE,<br />
+        <span class="gold-gradient">MA C'È UNA SOLA COSA CHE UN SAIYAN CONSERVA SEMPRE:</span><br />
+        <span class="electric-flame">IL SUO ORGOGLIO!»</span>
+      </h1>
+
+      <p class="saiyan-subhead">
+        Davanti al malvagio stregone Babidi che tenta di piegarlo al suo volere e nel mezzo dell'epico scontro con Kakaroth, <strong>Vegeta compie il supremo atto di sovranità interiore</strong>. Un manifesto immortale di dignità, rifiuto della schiavitù e orgoglio per le proprie origini.
+      </p>
+
+      <!-- CARD MANIFESTO DEL DISCORSO CON VIDEO YOUTUBE HD E TESTO INTEGRALE -->
+      <div class="speech-manifesto-card">
+        <div class="manifesto-grid">
+          
+          <!-- Colonna Video Iframe YouTube HD (Scena Completa in Italiano) -->
+          <div class="video-embed-col">
+            <div class="video-player-frame">
+              <iframe 
+                src="https://www.youtube.com/embed/QC2nTxGf7lg?rel=0" 
+                title="DBZ - Vegeta si ribella a Babidi - [ITA/HD]" 
+                loading="eager" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+              </iframe>
+            </div>
+            <div class="video-subtag">
+              <i data-lucide="volume-2"></i>
+              <span>Doppiaggio originale italiano storico (Gianluca Iacono / Vegeta)</span>
+            </div>
+          </div>
+
+          <!-- Colonna Trascrizione Verbatim con Callout Emozionale -->
+          <div class="manifesto-text-col">
+            <div class="saiyan-corner-tag">
+              <i data-lucide="shield-alert"></i>
+              <span>Il Testo Integrale della Scena</span>
+            </div>
+
+            <div class="quote-saiyan-block">
+              <div class="quote-marker" aria-hidden="true">“</div>
+              <p class="quote-saiyan-line highlight-lead">
+                «Babidi: "Uccidi il Kaiohshin, Vegeta! Ascolta i miei ordini! Io sono il tuo padrone!"»
+              </p>
+              <p class="quote-saiyan-line">
+                «Vegeta: "Smettila... smettila di gridare nella mia testa! <strong>Io non prendo ordini da un viscido moscerino come te!</strong>"»
+              </p>
+              <p class="quote-saiyan-line highlight-core">
+                «Babidi: "Ma come è possibile?! La mia magia ha piegato mostri e demoni... com'è possibile che tu riesca a resistermi?!"»
+              </p>
+              <p class="quote-saiyan-line final-shout">
+                «Vegeta: "Puoi prendere il controllo del mio corpo e puoi anche entrare nella mia mente... <strong>ma c'è una cosa che un vero Saiyan conserva sempre fino alla morte: IL SUO ORGOGLIO!</strong>"»
+              </p>
+            </div>
+
+            <!-- I 3 Cardini dell'Orgoglio di Vegeta -->
+            <div class="pride-pillars">
+              <div class="pride-pillar-item">
+                <div class="pp-icon"><i data-lucide="crown"></i></div>
+                <div>
+                  <strong>Nessun Padrone</strong>
+                  <p>La sovranità della mente è inviolabile: nessun despota, dio o condizione esterna può sottomerti se non sei tu a cedere.</p>
+                </div>
+              </div>
+              <div class="pride-pillar-item">
+                <div class="pp-icon"><i data-lucide="zap"></i></div>
+                <div>
+                  <strong>Sudore Spietato</strong>
+                  <p>Mentre gli altri confidano nel talento naturale, Vegeta scala ogni barriera con un allenamento estremo e incessante solitudine.</p>
+                </div>
+              </div>
+              <div class="pride-pillar-item">
+                <div class="pp-icon"><i data-lucide="heart"></i></div>
+                <div>
+                  <strong>L'Evoluzione del Guerriero</strong>
+                  <p>Dall'arroganza dell'invasore al supremo sacrificio d'amore per la famiglia e per il mondo: l'onore trova il suo vero scopo.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- SEZIONE LE 5 METAMORFOSI DEL PRINCIPE -->
+  <section class="section evolution-section" id="metamorfosi">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag-gold">La Parabola del Guerriero</span>
+        <h2 class="section-title">Le 5 Metamorfosi del Principe</h2>
+        <p class="section-subtitle">
+          Dall'invasore spietato al guerriero che trascende gli dei: ogni stadio è una forgiatura nel fuoco del dolore e dell'ostinazione.
+        </p>
+      </div>
+
+      <div class="forms-grid">
+        <!-- Forma 1 -->
+        <article class="form-card">
+          <div class="form-header">
+            <span class="form-saga">Saga dei Saiyan & Namecc</span>
+            <div class="scouter-badge">18.000+</div>
+          </div>
+          <div class="form-icon-wrap icon-blue">
+            <i data-lucide="crosshair"></i>
+          </div>
+          <h3 class="form-title">Il Principe Invasore</h3>
+          <p class="form-desc">
+            Armatura reale, scouter rosso e la certezza aristocratica di essere l'élite dell'universo. Lo scontro con Goku e il tradimento di Freezer gli insegnano che il lignaggio non basta: serve la sete assoluta.
+          </p>
+          <div class="form-mantra">«Io sono il Principe di tutti i Saiyan!»</div>
+        </article>
+
+        <!-- Forma 2 -->
+        <article class="form-card highlight-gold">
+          <div class="form-header">
+            <span class="form-saga">Saga degli Androidi</span>
+            <div class="scouter-badge gold">150.000.000</div>
+          </div>
+          <div class="form-icon-wrap icon-gold">
+            <i data-lucide="zap"></i>
+          </div>
+          <h3 class="form-title">Il Super Saiyan del Rifiuto</h3>
+          <p class="form-desc">
+            Senza maestri né pace interiore, Vegeta raggiunge la trasformazione leggendaria solo nello spazio profondo, alimentato da una rabbia pura e disperata contro i propri limiti: la barriera dorata è infranta.
+          </p>
+          <div class="form-mantra">«La mia rabbia era pura... pura frustrazione!»</div>
+        </article>
+
+        <!-- Forma 3 -->
+        <article class="form-card">
+          <div class="form-header">
+            <span class="form-saga">Saga di Cell</span>
+            <div class="scouter-badge cyan">Super Vegeta</div>
+          </div>
+          <div class="form-icon-wrap icon-cyan">
+            <i data-lucide="sparkles"></i>
+          </div>
+          <h3 class="form-title">Super Vegeta & Il Final Flash</h3>
+          <p class="form-desc">
+            Uscito dalla Stanza dello Spirito e del Tempo con il grado Dai Ni Dankai. Umilia Semi-Perfect Cell e scaglia il leggendario Lampo Finale (Final Flash), un raggio cosmico che rischia di polverizzare il pianeta.
+          </p>
+          <div class="form-mantra">«Io non sono un semplice Super Saiyan... sono SUPER VEGETA!»</div>
+        </article>
+
+        <!-- Forma 4 -->
+        <article class="form-card highlight-majin">
+          <div class="form-header">
+            <span class="form-saga">Saga di Majin Bu</span>
+            <div class="scouter-badge purple">Majin Pride</div>
+          </div>
+          <div class="form-icon-wrap icon-purple">
+            <i data-lucide="skull"></i>
+          </div>
+          <h3 class="form-title">Majin Vegeta & Il Sacrificio</h3>
+          <p class="form-desc">
+            Accetta il marchio di Babidi per risvegliare la spietatezza perduta, ma il suo orgoglio si ribella al mago. Culmina nell'esplosione finale: per la prima volta Vegeta dà la vita per Bulma, Trunks e persino Kakaroth.
+          </p>
+          <div class="form-mantra">«Addio Bulma, addio Trunks... e anche a te, Kakaroth.»</div>
+        </article>
+
+        <!-- Forma 5 -->
+        <article class="form-card highlight-god">
+          <div class="form-header">
+            <span class="form-saga">Dragon Ball Super</span>
+            <div class="scouter-badge blue">Ultra Ego</div>
+          </div>
+          <div class="form-icon-wrap icon-blue-fire">
+            <i data-lucide="shield"></i>
+          </div>
+          <h3 class="form-title">Blue Evolution & Ultra Ego</h3>
+          <p class="form-desc">
+            Rifiuta la via zen dell'Ultra Istinto per non rinnegare la propria essenza. Sblocca il Super Saiyan Blue Evolution contro Toppo e l'Ultra Ego col Dio Beerus: la forza scaturisce direttamente dall'ardore della battaglia.
+          </p>
+          <div class="form-mantra">«Trascenderò gli dei a modo mio: con il mio orgoglio!»</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE GRAVITY CHAMBER 450G & SCOUTER POWER LEVEL SIMULATOR -->
+  <section class="section gravity-section" id="gravity-chamber">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag-gold">Capsule Corp • Tecnologia di Allenamento</span>
+        <h2 class="section-title">Camera di Gravità a 450G & Scouter HUD</h2>
+        <p class="section-subtitle">
+          Nessuna scorciatoia, nessun dono: calcola il tuo potenziale di combattimento impostando il rigore del tuo addestramento quotidiano.
+        </p>
+      </div>
+
+      <div class="chamber-card">
+        <div class="chamber-grid">
+          
+          <!-- Controlli Parametri Allenamento -->
+          <div class="chamber-controls">
+            <div class="scouter-hud-header">
+              <span class="hud-label"><i data-lucide="cpu"></i> GRAVITY CONTROLLER v4.5</span>
+              <span class="hud-status" id="hudStatus">ONLINE // STANDBY</span>
+            </div>
+
+            <!-- Selezione Moltiplicatore Gravità -->
+            <div class="control-group">
+              <label for="gravityLevel" class="control-label">
+                <span>Intensità Gravitazionale</span>
+                <strong id="gravityDisplay">450G (Capsule Corp Super)</strong>
+              </label>
+              <div class="gravity-buttons" role="radiogroup" aria-label="Seleziona gravità">
+                <button class="grav-btn" data-g="100" role="radio" aria-checked="false">100G</button>
+                <button class="grav-btn" data-g="300" role="radio" aria-checked="false">300G</button>
+                <button class="grav-btn active" data-g="450" role="radio" aria-checked="true">450G</button>
+                <button class="grav-btn" data-g="500" role="radio" aria-checked="false">500G+</button>
+              </div>
+            </div>
+
+            <!-- Ore di Focus Quotidiano Slider -->
+            <div class="control-group">
+              <label for="hoursInput" class="control-label">
+                <span>Ore di Addestramento / Focus Quotidiano</span>
+                <strong id="hoursDisplay">8 Ore</strong>
+              </label>
+              <input type="range" id="hoursInput" min="1" max="18" value="8" step="1" class="saiyan-range" />
+            </div>
+
+            <!-- Disciplina Mentale Slider -->
+            <div class="control-group">
+              <label for="gritInput" class="control-label">
+                <span>Resistenza Mentale & Determinazione</span>
+                <strong id="gritDisplay">90% (Orgoglio Reale)</strong>
+              </label>
+              <input type="range" id="gritInput" min="20" max="100" value="90" step="5" class="saiyan-range" />
+            </div>
+
+            <button class="btn-scouter-scan" id="scanPowerBtn">
+              <i data-lucide="radio"></i>
+              <span>Scansiona con lo Scouter</span>
+            </button>
+          </div>
+
+          <!-- Display Scouter HUD Olografico -->
+          <div class="scouter-hud-display">
+            <div class="hud-frame">
+              <div class="hud-corner tl"></div>
+              <div class="hud-corner tr"></div>
+              <div class="hud-corner bl"></div>
+              <div class="hud-corner br"></div>
+
+              <div class="hud-top-meta">
+                <span class="hud-sys">SCOUTER MODEL: V-PRIDE-99</span>
+                <span class="hud-freq">FREQ: 840.4 MHz</span>
+              </div>
+
+              <div class="hud-reading">
+                <div class="hud-target-circle">
+                  <div class="target-cross"></div>
+                </div>
+                <div class="hud-power-number" id="scouterPowerNumber">1.250.000</div>
+                <div class="hud-unit">BATTLE POWER (KI)</div>
+              </div>
+
+              <!-- Livello Valutazione Vegeta -->
+              <div class="hud-feedback-box">
+                <span class="hud-feedback-title">VALUTAZIONE DEL PRINCIPE:</span>
+                <p id="vegetaVerdict">
+                  «Accettabile. Il tuo livello è sufficiente per non farti schiacciare all'istante, ma un vero guerriero non si accontenta mai. Torna subito nella camera gravitazionale!»
+                </p>
+              </div>
+
+              <div class="hud-bottom-bar">
+                <div class="hud-bar-fill" id="hudBarFill" style="width: 82%;"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE CITAZIONI INTERATTIVE DEL PRINCIPE -->
+  <section class="section quotes-section" id="citazioni">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag-gold">Parole che Spezzano l'Acciaio</span>
+        <h2 class="section-title">Le Frasi Iconiche di Vegeta</h2>
+        <p class="section-subtitle">
+          I monologhi più audaci e motivazionali sulla determinazione implacabile, sulla dignità personale e sulla fierezza delle proprie origini.
+        </p>
+      </div>
+
+      <!-- Barra di Ricerca Citazioni in Tempo Reale -->
+      <div class="search-bar-wrap">
+        <div class="search-box">
+          <i data-lucide="search" class="search-icon"></i>
+          <input type="text" id="quoteSearch" placeholder="Cerca tra le frasi (es. orgoglio, Kakaroth, limiti, 450G, Cell...)" aria-label="Cerca citazione" />
+          <button id="clearSearchBtn" class="clear-search-btn" title="Cancella ricerca" aria-label="Cancella testo ricerca">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filtri Categoria Interattivi -->
+      <div class="category-filters" id="categoryFilters" role="tablist" aria-label="Filtra citazioni">
+        <button class="filter-btn active" role="tab" aria-selected="true" data-filter="all">Tutte le Massime</button>
+        <button class="filter-btn" role="tab" aria-selected="false" data-filter="Orgoglio & Dignità">Orgoglio & Dignità</button>
+        <button class="filter-btn" role="tab" aria-selected="false" data-filter="L'Eterna Rivalità con Kakaroth">Rivalità con Kakaroth</button>
+        <button class="filter-btn" role="tab" aria-selected="false" data-filter="Il Sacrificio di Majin Bu">Il Sacrificio</button>
+        <button class="filter-btn" role="tab" aria-selected="false" data-filter="Super Saiyan & Limiti">Super Saiyan & Limiti</button>
+        <button class="filter-btn" role="tab" aria-selected="false" data-filter="Allenamento & Determinazione">Allenamento & Fatica</button>
+        <button class="filter-btn" role="tab" aria-selected="false" data-filter="La Famiglia & L'Evoluzione">Famiglia & Cuore</button>
+      </div>
+
+      <!-- Quotes Cards Grid -->
+      <div class="quotes-grid" id="quote-list" aria-live="polite">
+        <!-- Renderizzato via JavaScript da quotes.json -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE VIDEO SCENE CULT & DISCORSI STORICI (IFRAME HD) -->
+  <section class="section video-section" id="video">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag-gold">Momenti Indelebili dell'Animazione</span>
+        <h2 class="section-title">Scene Cult & Monologhi Storici (HD ITA)</h2>
+        <p class="section-subtitle">
+          Guarda i frammenti più toccanti e titanici con il leggendario doppiaggio italiano di Gianluca Iacono.
+        </p>
+      </div>
+
+      <div class="video-grid">
+        <!-- Video 1: Ribellione a Babidi -->
+        <div class="video-card">
+          <div class="iframe-container">
+            <iframe 
+              src="https://www.youtube.com/embed/QC2nTxGf7lg?rel=0" 
+              title="DBZ - Vegeta si ribella a Babidi - [ITA/HD]" 
+              loading="lazy" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-info">
+            <div class="video-meta">
+              <span class="badge-cat">Saga di Majin Bu</span>
+              <span class="video-duration"><i data-lucide="flame"></i> Il Discorso dell'Orgoglio</span>
+            </div>
+            <h4>«C'è una sola cosa che un Saiyan conserva sempre: il suo orgoglio!»</h4>
+            <p>
+              Vegeta si rifiuta di uccidere il Kaiohshin e spezza la possessione di Babidi: il momento più alto di dignità e autodeterminazione.
+            </p>
+          </div>
+        </div>
+
+        <!-- Video 2: Il Sacrificio di Vegeta -->
+        <div class="video-card">
+          <div class="iframe-container">
+            <iframe 
+              src="https://www.youtube.com/embed/m246vcU1vl4?rel=0" 
+              title="IL SACRIFICIO DI MAJIN VEGETA | HD ITA" 
+              loading="lazy" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-info">
+            <div class="video-meta">
+              <span class="badge-cat">Saga di Majin Bu</span>
+              <span class="video-duration"><i data-lucide="heart"></i> Sacrificio Estremo</span>
+            </div>
+            <h4>«Addio Bulma, addio Trunks... e anche a te, Kakaroth»</h4>
+            <p>
+              L'abbraccio a Trunks e l'esplosione suprema per salvare la Terra e coloro che ha imparato ad amare più della propria vita.
+            </p>
+          </div>
+        </div>
+
+        <!-- Video 3: Final Flash contro Perfect Cell -->
+        <div class="video-card">
+          <div class="iframe-container">
+            <iframe 
+              src="https://www.youtube.com/embed/m6NwuTNxDZs?rel=0" 
+              title="Lampo finale di Vegeta VS Cell ITA" 
+              loading="lazy" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-info">
+            <div class="video-meta">
+              <span class="badge-cat">Saga di Cell</span>
+              <span class="video-duration"><i data-lucide="sparkles"></i> Final Flash</span>
+            </div>
+            <h4>Il Lampo Finale: «Guarda con attenzione, Cell!»</h4>
+            <p>
+              Super Vegeta concentra tutta la propria rabbia in un raggio devastante che squarcia il corpo del mostro perfetto e scuote l'intero pianeta.
+            </p>
+          </div>
+        </div>
+
+        <!-- Video 4: Vegeta riconosce Goku come Numero 1 -->
+        <div class="video-card">
+          <div class="iframe-container">
+            <iframe 
+              src="https://www.youtube.com/embed/a2JuOpsz-1c?rel=0" 
+              title="Vegeta ammette che Goku è il numero uno ITA" 
+              loading="lazy" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-info">
+            <div class="video-meta">
+              <span class="badge-cat">Saga di Kid Bu</span>
+              <span class="video-duration"><i data-lucide="trophy"></i> Riconoscimento Storico</span>
+            </div>
+            <h4>«Forza Kakaroth, sei tu il numero uno!»</h4>
+            <p>
+              Il monologo di redenzione sul pianeta dei Kaiohshin: Vegeta comprende la differenza tra combattere per ego e combattere per superare se stessi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE PILLOLA DI ORGOGLIO QUOTIDIANO (GENERATORE DINAMICO) -->
+  <section class="section inspiration-banner" id="daily-quote">
+    <div class="container">
+      <div class="inspiration-box">
+        <div class="box-content">
+          <span class="mini-label">
+            <i data-lucide="flame"></i> Carica Saiyan Quotidiana
+          </span>
+          <h3 id="dailyQuoteText">«I limiti esistono soltanto per coloro che hanno paura di superarli!»</h3>
+          <p id="dailyQuoteContext">– Vegeta nella Stanza dello Spirito e del Tempo</p>
+          <button class="btn btn-primary" id="newQuoteBtn" aria-label="Mostra una nuova citazione di Vegeta">
+            <i data-lucide="refresh-cw"></i>
+            <span>Altra Carica Saiyan</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE TRIBUTO & CREDITI -->
+  <section class="section author-tribute-section">
+    <div class="container">
+      <div class="tribute-grid">
+        <div class="tribute-card creator-card">
+          <div class="tc-header">
+            <i data-lucide="code-2" class="tc-icon"></i>
+            <h4>Sviluppo & Architettura</h4>
+          </div>
+          <p>
+            Ideato, progettato e realizzato da <strong>Luca Celebrano</strong> (<a href="https://github.com/Lukecele" target="_blank" rel="noopener noreferrer">@Lukecele</a>). Un tributo all'eccellenza tecnica, al design moderno e ai valori della resilienza senza scuse.
+          </p>
+          <div class="tc-links">
+            <a href="https://github.com/Lukecele" target="_blank" rel="noopener noreferrer" class="tc-link">
+              <i data-lucide="github"></i> GitHub: @Lukecele
+            </a>
+          </div>
+        </div>
+
+        <div class="tribute-card toriyama-card">
+          <div class="tc-header">
+            <i data-lucide="sparkles" class="tc-icon gold"></i>
+            <h4>In Memoria di Akira Toriyama (1955 – 2024)</h4>
+          </div>
+          <p>
+            Al leggendario Maestro che ha insegnato a miliardi di ragazzi in tutto il mondo che la fatica, la perseveranza e l'onore possono trasformare qualsiasi persona in un eroe indomabile.
+          </p>
+        </div>
+
+        <div class="tribute-card iacono-card">
+          <div class="tc-header">
+            <i data-lucide="mic" class="tc-icon cyan"></i>
+            <h4>Omaggio a Gianluca Iacono</h4>
+          </div>
+          <p>
+            Alla voce storica italiana di Vegeta: con la sua interpretazione graffiante, altera e profondamente umana ha reso immortale ogni parola di questo personaggio nei nostri cuori.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CON NOTE LEGALI, PRIVACY E PWA READY -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <img src="assets/favicon.svg" alt="Logo Vegeta" width="38" height="38" class="logo-img-small" />
+          <div class="logo-text-group">
+            <span class="logo-title">VEGETA</span>
+            <span class="logo-sub">Il Principe dei Saiyan</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Portale celebrativo, culturale e didattico dedicato alla filosofia dell'orgoglio Saiyan, alla cultura del duro lavoro e all'eredità motivazionale di Dragon Ball.
+        </p>
+        <div class="footer-pill">
+          <span>⚡ «Nessun limite potrà mai fermare un guerriero che combatte per la propria dignità!»</span>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="link-col">
+          <strong>Navigazione</strong>
+          <a href="#discorso-orgoglio">Il Discorso dell'Orgoglio</a>
+          <a href="#metamorfosi">Le 5 Metamorfosi</a>
+          <a href="#gravity-chamber">Gravity 450G & Scouter</a>
+          <a href="#citazioni">Frasi Iconiche</a>
+          <a href="#video">Scene Cult (HD ITA)</a>
+        </div>
+        <div class="link-col">
+          <strong>I Pilastri del Saiyan</strong>
+          <span>Autonomia Assoluta</span>
+          <span>Zero Alibi, Solo Sudore</span>
+          <span>La Dignità del Combattente</span>
+          <span>L'Amore che Protegge</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sezione Note Legali, Marchi e Fair Use -->
+    <div class="container">
+      <div class="footer-disclaimer-card">
+        <h5><i data-lucide="shield-check"></i> Trasparenza, Proprietà Intellettuale & Note Legali</h5>
+        <p>
+          <strong>Natura del sito:</strong> Portale indipendente a carattere esclusivamente divulgativo, commemorativo, didattico e motivazionale senza alcun fine di lucro.<br />
+          <strong>Assenza di affiliazione:</strong> Il presente sito non è affiliato, sponsorizzato, autorizzato né gestito da Bird Studio, Akira Toriyama Estate, Shueisha Inc., Toei Animation Co., Ltd., Bandai Namco o dai rispettivi aventi diritto.<br />
+          <strong>Proprietà intellettuale e Marchi:</strong> Il nome "Vegeta", "Dragon Ball", "Saiyan", i nomi dei personaggi e i relativi marchi registrati appartengono a Bird Studio / Shueisha / Toei Animation. Il loro richiamo è effettuato unicamente a scopo identificativo, documentale e di critica culturale in ossequio al principio di <em>nominative fair use</em> e all'art. 70 della Legge 633/1941 sul diritto d'autore (nonché art. 20 D.Lgs. 30/2005). I video incorporati tramite <code>iframe</code> appartengono ai rispettivi titolari e canali di diffusione pubblica (YouTube), in conformità con la giurisprudenza della Corte di Giustizia dell'Unione Europea (sentenze CGUE <em>Svensson</em> C-466/12 e <em>BestWater</em> C-348/13).
+        </p>
+        <div class="legal-links-row">
+          <button class="legal-link-btn" id="openPrivacyBtn">Informativa Privacy & Trattamento Dati</button>
+          <span>•</span>
+          <button class="legal-link-btn" id="openCookieBtn">Informativa Cookie & Preferenze</button>
+          <span>•</span>
+          <button class="legal-link-btn" id="openCopyrightBtn">Diritto d'Autore & Fair Use</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container bottom-flex">
+        <p>© 2026 Vegeta: Il Principe dei Saiyan. PWA Installabile • Conforme a GDPR & Direttiva ePrivacy • Realizzato da <a href="https://github.com/Lukecele" target="_blank" rel="noopener noreferrer" class="footer-credit-link">Luca Celebrano</a>.</p>
+        <button class="back-to-top" id="backToTop" aria-label="Torna in cima alla pagina">
+          <i data-lucide="arrow-up"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GDPR Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Consenso Cookie e Privacy">
+    <div class="cookie-content">
+      <div class="cookie-icon">
+        <i data-lucide="cookie"></i>
+      </div>
+      <div class="cookie-text">
+        <h4>Tutela della Privacy & Cookie</h4>
+        <p>
+          Questo portale utilizza esclusivamente cookie tecnici essenziali e il Service Worker per garantire la fruizione offline e la massima velocità. Non utilizziamo cookie di profilazione né vendiamo dati. I video incorporati da YouTube sono configurati nel rispetto della tua privacy. Consulta l'Informativa per i dettagli.
+        </p>
+        <div class="cookie-actions">
+          <button class="btn-cookie-accept" id="acceptCookiesBtn">Accetto e Chiudi</button>
+          <button class="btn-cookie-reject" id="rejectCookiesBtn">Solo Tecnici</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modale Legale Dettagliata -->
+  <div class="legal-modal-overlay" id="legalModalOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="legalModalTitle">
+    <div class="legal-modal">
+      <div class="modal-header">
+        <h3 id="legalModalTitle"><i data-lucide="shield"></i> Informativa Legale, Privacy & Cookie</h3>
+        <button class="modal-close-btn" id="closeLegalModal" aria-label="Chiudi finestra modale">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <h4>1. Finalità e Titolarità del Portale</h4>
+        <p>
+          Questo sito web è un progetto no-profit a scopo culturale, divulgativo, artistico e motivazionale ideato da Luca Celebrano. Non prevede registrazione utenti, né commercio elettronico, né raccolta di dati per fini pubblicitari.
+        </p>
+
+        <h4>2. Cookie & Service Worker PWA</h4>
+        <p>
+          In conformità al Regolamento UE 2016/679 (GDPR) e alla direttiva ePrivacy:
+        </p>
+        <ul>
+          <li><strong>Cookie Tecnici:</strong> Memorizzazione locale della preferenza cookie (<code>vegeta_cookie_consent_v1</code>) e Service Worker per navigazione offline.</li>
+          <li><strong>Iframe di Terze Parti (YouTube):</strong> I player sono incorporati utilizzando domini con privacy accresciuta e parametri standard.</li>
+          <li><strong>Zero Profilazione Proprietaria:</strong> Nessun dato personale viene profilato, tracciato o ceduto a terzi.</li>
+        </ul>
+
+        <h4>3. Diritto d'Autore, Citazione e Fair Use</h4>
+        <p>
+          I testi, le citazioni e i riferimenti narrativi ai film e agli episodi di <em>Dragon Ball Z</em> e <em>Dragon Ball Super</em> sono riportati ad uso didattico, critico e commemorativo, in conformità con l'art. 70 della Legge 633/1941 sul diritto d'autore e con i principi internazionali di <em>fair quotation</em>.
+        </p>
+
+        <h4>4. Procedura di Rimozione (Notice & Take Down)</h4>
+        <p>
+          I titolari legittimi dei diritti che desiderassero la modifica o rimozione di specifici contenuti possono inviare una segnalazione, alla quale si darà tempestivo e immediato riscontro.
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-cookie-accept" id="modalDismissBtn">Ho Compreso</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Feedback -->
+  <div class="toast-notification" id="toastNotification" role="alert" aria-live="assertive">
+    <i data-lucide="check-circle" class="toast-icon"></i>
+    <span id="toastMessage">Citazione copiata negli appunti!</span>
+  </div>
+</body>
+</html>

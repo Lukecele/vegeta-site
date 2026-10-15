@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vegeta-site.vercel.app/sitemap.xml
