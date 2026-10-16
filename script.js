@@ -145,8 +145,8 @@ const FALLBACK_QUOTES = [
     saga: "Saga di Majin Bu",
     icon: "heart",
     powerLevel: "Incalcolabile",
-    videoId: "MhiBgiYCeuI",
-    videoTitle: "Il Sacrificio di Majin Vegeta (Scena Integrale 5:40 HD ITA)"
+    videoId: "pin0oBdcyXQ",
+    videoTitle: "Il Valoroso Sacrificio di Majin Vegeta (Scena Integrale 5:19 HD ITA)"
   },
   {
     quote: "Te l'ho già detto: io... io voglio soltanto battermi con Kakaroth! Gli altri non mi interessano! Io sono il principe dei guerrieri Saiyan, non so se mi spiego! Non mi lascio comandare da un essere patetico come te! Anche se il mio corpo e la mia mente sono sotto il tuo controllo, il mio orgoglio mi impedisce di eseguire i tuoi ordini! Sono stato chiaro?!",
