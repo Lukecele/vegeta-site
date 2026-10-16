@@ -6,7 +6,7 @@
  *           GDPR & Legal Modals.
  * Zero audio sintetico/robotico: solo scene e doppiaggio originale (Gianluca Iacono).
  * 
- * Ideato e curato da Luca Celebrano (@Lukecele)
+ * Sviluppato da @Lukecele (https://github.com/Lukecele)
  */
 
 'use strict';

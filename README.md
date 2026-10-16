@@ -126,7 +126,7 @@ npx serve vegeta-site
 
 ## 👤 Autore & Crediti
 
-- **Ideazione, Design & Sviluppo:** [Luca Celebrano](https://github.com/Lukecele) (`@Lukecele`)
+- **Ideazione, Design & Sviluppo:** [@Lukecele](https://github.com/Lukecele)
 - **Opera Originale:** Personaggi e universo creati dal Maestro **Akira Toriyama** (*Bird Studio / Shueisha / Toei Animation*).
 - **Voce Italiana Storica di Vegeta:** Maestro Gianluca Iacono (Mediaset / Merak Film).
 
