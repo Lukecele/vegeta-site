@@ -656,6 +656,147 @@ body {
   padding: 0.35rem 0.5rem;
 }
 
+/* ==========================================================================
+   PRINCE'S DOSSIER & HERO ACTIONS
+   ========================================================================== */
+.manifesto-dossier-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dossier-panel {
+  background: rgba(5, 8, 20, 0.75);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: inset 0 0 24px rgba(0, 240, 255, 0.05), 0 12px 32px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+}
+
+.dossier-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.dossier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--ki-blue);
+  text-transform: uppercase;
+}
+
+.dossier-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.dossier-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.spec-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.spec-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.spec-val {
+  font-size: 0.95rem;
+  color: #f1f5f9;
+}
+
+.spec-val.gold {
+  color: var(--gold-light);
+}
+
+.spec-val.cyan {
+  color: var(--ki-blue-soft);
+}
+
+.spec-val.purple {
+  color: #c084fc;
+}
+
+.hero-actions-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.hero-btn {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #d97706, #fbbf24);
+  color: #0b0f19;
+  border: 1px solid rgba(251, 191, 36, 0.6);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.35);
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #f59e0b, #fde047);
+  box-shadow: 0 0 24px rgba(251, 191, 36, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: rgba(15, 23, 42, 0.6);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--ki-blue);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
 .manifesto-text-col {
   display: flex;
   flex-direction: column;
