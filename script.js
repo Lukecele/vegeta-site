@@ -23,7 +23,7 @@ if ('speechSynthesis' in window) {
 if ('caches' in window) {
   caches.keys().then((keys) => {
     keys.forEach((key) => {
-      if (key !== 'vegeta-pwa-v6') {
+      if (key !== 'vegeta-pwa-v7') {
         console.log('[Cache Purge] Rimuovo cache obsoleta:', key);
         caches.delete(key);
       }
