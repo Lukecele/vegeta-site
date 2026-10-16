@@ -1,7 +1,7 @@
 # 👑 Vegeta // Il Principe dei Saiyan – Portale Ufficiale & Archivio Motivazionale
 
-> *"«Puoi prendere il controllo della mia mente e del mio corpo, ma c'è una cosa che un Saiyan conserva sempre: il suo ORGOGLIO!»"*  
-> — **Vegeta**, *Saga di Majin Bu (1994)*
+> *"«Io sono il principe dei guerrieri Saiyan, non so se mi spiego! Anche se il mio corpo e la mia mente sono sotto il tuo controllo, il mio orgoglio mi impedisce di eseguire i tuoi ordini! Sono stato chiaro?!»"*  
+> — **Vegeta**, *Saga di Majin Bu (1994) – Doppiaggio storico Mediaset di Gianluca Iacono*
 
 Un portale web e Progressive Web App (PWA) moderna, immersiva e curata nella perfezione tecnica, dedicata all'icona immortale di **Vegeta**, Principe di tutti i Saiyan: dalla filosofia del superamento continuo dei propri limiti all'allenamento spietato a 450 volte la gravità terrestre, fino al riconoscimento della vera nobiltà d'animo.
 

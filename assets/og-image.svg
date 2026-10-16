@@ -62,11 +62,11 @@
     </text>
 
     <!-- Subtitle / Headline -->
-    <text x="0" y="235" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#f8fafc">
-      «C'è una sola cosa che un Saiyan conserva sempre:
+    <text x="0" y="235" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">
+      «IL MIO ORGOGLIO MI IMPEDISCE
     </text>
-    <text x="0" y="285" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="900" fill="url(#goldText)" filter="url(#auraGlow)">
-      IL SUO ORGOGLIO!»
+    <text x="0" y="285" font-family="system-ui, -apple-system, sans-serif" font-size="38" font-weight="900" fill="url(#goldText)" filter="url(#auraGlow)">
+      DI ESEGUIRE I TUOI ORDINI!»
     </text>
 
     <!-- Description -->
