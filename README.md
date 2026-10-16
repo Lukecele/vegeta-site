@@ -90,7 +90,8 @@ vegeta-site/
 │   ├── icon-192.png         # Icona PWA 192x192 PNG (Any & Maskable)
 │   ├── icon-512.png         # Icona PWA 512x512 PNG (Any & Maskable)
 │   ├── apple-touch-icon.png # Icona iOS WebClip 180x180 PNG
-│   ├── og-image.svg         # Open Graph & Social Card 1200x630
+│   ├── og-image.svg         # Open Graph & Social Card 1200x630 (SVG vettoriale)
+│   ├── og-image.png         # Open Graph Social Card 1200x630 (PNG compatibile social)
 │   └── images/              # Eventuali asset grafici supplementari
 ├── index.html               # Architettura semantica, metadati SEO & PWA
 ├── style.css                # Sistema stilistico Saiyan Dark/Gold/HUD (~2100 righe)
