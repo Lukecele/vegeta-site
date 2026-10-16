@@ -23,7 +23,7 @@ if ('speechSynthesis' in window) {
 if ('caches' in window) {
   caches.keys().then((keys) => {
     keys.forEach((key) => {
-      if (key !== 'vegeta-pwa-v7') {
+      if (key !== 'vegeta-pwa-v8') {
         console.log('[Cache Purge] Rimuovo cache obsoleta:', key);
         caches.delete(key);
       }
@@ -34,7 +34,7 @@ if ('caches' in window) {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register('./sw.js?v=2.1.0')
+      .register('./sw.js?v=2.2.0')
       .then((reg) => {
         console.log('[PWA] Service Worker attivo. Scope:', reg.scope);
         // Forza l'aggiornamento immediato del Service Worker
@@ -214,7 +214,9 @@ const FALLBACK_QUOTES = [
     category: "Super Saiyan & Limiti",
     saga: "Saga di Cell",
     icon: "shield",
-    powerLevel: "Dai Ni Dankai"
+    powerLevel: "Dai Ni Dankai",
+    videoId: "m6NwuTNxDZs",
+    videoTitle: "Super Vegeta contro Perfect Cell – Doppiaggio Storico ITA"
   },
   {
     quote: "Sarai anche fortissimo come dici, ma non credo proprio che riuscirai a fermare questo colpo! Chi pensi di impressionare?! Aspetta che ti risponda a modo mio... questo non è tutto: aspetta che ti faccia l'ultima sorpresa! LAMPO FINALE!",
@@ -265,7 +267,7 @@ let searchQuery = '';
  */
 async function loadQuotes() {
   try {
-    const res = await fetch('./quotes.json?v=2.1.0');
+    const res = await fetch('./quotes.json?v=2.2.0');
     if (res.ok) {
       const data = await res.json();
       if (Array.isArray(data) && data.length > 0) {
@@ -337,15 +339,36 @@ function renderQuotes() {
           </p>
 
           <div class="qc-actions">
-            <button class="btn-card-action btn-copy-quote" data-quote="${escapeAttribute(item.quote)}" data-context="${escapeAttribute(item.context)}" title="Copia citazione">
-              <i data-lucide="copy"></i>
-              <span>Copia</span>
-            </button>
+            ${item.videoId ? `
+              <div class="qc-video-actions">
+                <a href="#video-${escapeAttribute(item.videoId)}" 
+                   class="btn-card-action btn-watch-scene" 
+                   data-video-id="${escapeAttribute(item.videoId)}" 
+                   title="Guarda la scena originale in HD ITA con Gianluca Iacono">
+                  <i data-lucide="play-circle"></i>
+                  <span>Video ITA</span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=${escapeAttribute(item.videoId)}" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn-card-action btn-yt-direct" 
+                   title="Apri su YouTube in nuova scheda">
+                  <i data-lucide="external-link"></i>
+                </a>
+              </div>
+            ` : '<div class="qc-video-actions"></div>'}
 
-            <button class="btn-card-action btn-share-quote" data-quote="${escapeAttribute(item.quote)}" data-context="${escapeAttribute(item.context)}" title="Condividi">
-              <i data-lucide="share-2"></i>
-              <span>Condividi</span>
-            </button>
+            <div class="qc-share-actions">
+              <button class="btn-card-action btn-copy-quote" data-quote="${escapeAttribute(item.quote)}" data-context="${escapeAttribute(item.context)}" title="Copia citazione">
+                <i data-lucide="copy"></i>
+                <span>Copia</span>
+              </button>
+
+              <button class="btn-card-action btn-share-quote" data-quote="${escapeAttribute(item.quote)}" data-context="${escapeAttribute(item.context)}" title="Condividi">
+                <i data-lucide="share-2"></i>
+                <span>Condividi</span>
+              </button>
+            </div>
           </div>
         </article>
       `;
@@ -358,14 +381,32 @@ function renderQuotes() {
 }
 
 /* ==========================================================================
-   4. ACTIONS: COPIA & CONDIVISIONE CITAZIONI
+   4. ACTIONS: COPIA, CONDIVISIONE & SCORRIMENTO A SCENE REALI (HD ITA)
    ========================================================================== */
 function setupQuoteActions() {
   const container = document.getElementById('quote-list');
   if (!container) return;
 
   container.addEventListener('click', (e) => {
-    // 1. Copia negli appunti
+    // 1. Guarda Scena Originale HD ITA (scorrimento fluido alla card con highlight pulse)
+    const watchBtn = e.target.closest('.btn-watch-scene');
+    if (watchBtn) {
+      const videoId = watchBtn.getAttribute('data-video-id');
+      if (videoId) {
+        const targetCard = document.getElementById(`video-${videoId}`);
+        if (targetCard) {
+          e.preventDefault();
+          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          targetCard.classList.remove('highlight-pulse');
+          void targetCard.offsetWidth; // Trigger reflow per riavviare l'animazione
+          targetCard.classList.add('highlight-pulse');
+          showToast('Scorrendo alla scena cult HD ITA...', 'play-circle');
+          return;
+        }
+      }
+    }
+
+    // 2. Copia negli appunti
     const copyBtn = e.target.closest('.btn-copy-quote');
     if (copyBtn) {
       const quote = copyBtn.getAttribute('data-quote');
@@ -380,7 +421,7 @@ function setupQuoteActions() {
       return;
     }
 
-    // 2. Condividi con Web Share API o Fallback
+    // 3. Condividi con Web Share API o Fallback
     const shareBtn = e.target.closest('.btn-share-quote');
     if (shareBtn) {
       const quote = shareBtn.getAttribute('data-quote');
