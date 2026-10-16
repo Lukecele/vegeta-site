@@ -53,15 +53,12 @@ Un portale web e Progressive Web App (PWA) moderna, immersiva e curata nella per
 - **Copia rapida negli appunti** con notifica Toast fluida.
 - Supporto nativo alla **Web Share API**.
 
-### 5. 🎬 Hub Video 7 Scene Cult HD ITA (Doppiaggio Ufficiale Mediaset)
-- Selezione curata dei 7 momenti leggendari con embed ottimizzato YouTube:
-  1. *Vegeta si ribella al controllo mentale di Babidi* («C'è una sola cosa che un Saiyan conserva...»)
-  2. *L'addio a Trunks e il Sacrificio contro Majin Bu* («Questa volta non combatto per me stesso»)
-  3. *Il Lampo Finale contro Perfect Cell (Final Flash)*
-  4. *La prima trasformazione a 450G tra le meteore* («Tutto ciò che ho l'ho strappato a 450G!»)
-  5. *«La Mia Bulmaaa!» contro Lord Beerus*
-  6. *Vegeta vs Toppo: Super Saiyan Blue Evolution* («Non getterò mai via ciò che sono!»)
-  7. *La confessione suprema: «Forza Kakaroth, sei tu il numero uno!»*
+### 5. 🎬 Scene Cult & Doppiaggio Storico Ufficiale (Gianluca Iacono)
+- Selezione curata dei momenti leggendari con embed YouTube HD:
+  - *La Scena Madre (Hero)*: **Il Sacrificio di Majin Vegeta** (Episodio 237)
+  - *Video 1*: **Vegeta vs Toppo: Il Richiamo al Sacrificio** (Dragon Ball Super, Ep. 126)
+  - *Video 2*: **La Confessione Finale: «Sei tu il numero uno!»** (Episodio 280)
+  - *Video 3*: **Il Risveglio del Super Saiyan & Sfida all'Androide 19** (Episodio 129)
 
 ### 6. 📱 PWA 100% Conforme ai Massimi Standard
 - **Manifest completo (`manifest.json`)**:

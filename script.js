@@ -305,7 +305,7 @@ function renderQuotes() {
       <div class="quotes-empty-state" style="grid-column: 1 / -1; text-align: center; padding: 3rem 1.5rem; background: rgba(14,21,48,0.5); border-radius: 16px; border: 1px dashed rgba(251,191,36,0.3);">
         <i data-lucide="search-x" style="width: 48px; height: 48px; color: var(--gold-light); margin-bottom: 1rem;"></i>
         <h3 style="font-family: var(--font-royal); color: #fff; margin-bottom: 0.5rem;">Nessuna massima Saiyan trovata</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 480px; margin: 0 auto;">Nessuna citazione corrisponde a «<strong>${escapeHtml(searchQuery)}</strong>». Prova con termini come <em>orgoglio</em>, <em>Kakaroth</em>, <em>450G</em> o <em>Cell</em>.</p>
+        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 480px; margin: 0 auto;">Nessuna citazione corrisponde a «<strong>${escapeHtml(searchQuery)}</strong>». Prova con termini come <em>orgoglio</em>, <em>Kakaroth</em>, <em>Cell</em> o <em>Trunks</em>.</p>
       </div>
     `;
     if (window.lucide) lucide.createIcons();
@@ -315,14 +315,6 @@ function renderQuotes() {
   container.innerHTML = filtered
     .map((item, index) => {
       const iconName = item.icon || 'quote';
-      const hasVideo = !!item.videoId;
-
-      const videoButton = hasVideo
-        ? `<button class="btn-card-action btn-watch-scene" data-video-id="${escapeAttribute(item.videoId)}" data-video-title="${escapeAttribute(item.videoTitle || item.quote)}" title="Guarda la scena originale in HD ITA con la voce di Gianluca Iacono">
-             <i data-lucide="play-circle"></i>
-             <span>Scena HD ITA</span>
-           </button>`
-        : '';
 
       return `
         <article class="quote-card" data-index="${index}">
@@ -345,8 +337,6 @@ function renderQuotes() {
           </p>
 
           <div class="qc-actions">
-            ${videoButton}
-
             <button class="btn-card-action btn-copy-quote" data-quote="${escapeAttribute(item.quote)}" data-context="${escapeAttribute(item.context)}" title="Copia citazione">
               <i data-lucide="copy"></i>
               <span>Copia</span>
@@ -368,25 +358,14 @@ function renderQuotes() {
 }
 
 /* ==========================================================================
-   4. ACTIONS: COPIA, CONDIVISIONE & THEATER MODAL PER SCENE REALI (HD ITA)
+   4. ACTIONS: COPIA & CONDIVISIONE CITAZIONI
    ========================================================================== */
 function setupQuoteActions() {
   const container = document.getElementById('quote-list');
   if (!container) return;
 
   container.addEventListener('click', (e) => {
-    // 1. Guarda Scena Originale HD ITA
-    const watchBtn = e.target.closest('.btn-watch-scene');
-    if (watchBtn) {
-      const videoId = watchBtn.getAttribute('data-video-id');
-      const videoTitle = watchBtn.getAttribute('data-video-title');
-      if (videoId) {
-        openVideoModal(videoId, videoTitle);
-      }
-      return;
-    }
-
-    // 2. Copia negli appunti
+    // 1. Copia negli appunti
     const copyBtn = e.target.closest('.btn-copy-quote');
     if (copyBtn) {
       const quote = copyBtn.getAttribute('data-quote');
@@ -401,7 +380,7 @@ function setupQuoteActions() {
       return;
     }
 
-    // 3. Condividi con Web Share API o Fallback
+    // 2. Condividi con Web Share API o Fallback
     const shareBtn = e.target.closest('.btn-share-quote');
     if (shareBtn) {
       const quote = shareBtn.getAttribute('data-quote');
@@ -427,65 +406,6 @@ function copyToClipboardDirect(text) {
   navigator.clipboard.writeText(text).then(() => {
     showToast('Testo copiato per la condivisione!', 'share-2');
   });
-}
-
-/* ==========================================================================
-   5. VIDEO THEATER MODAL (DOPIAGGIO ORIGINALE ITALIANO)
-   ========================================================================== */
-function setupVideoModal() {
-  const modal = document.getElementById('videoModalOverlay');
-  const closeBtn = document.getElementById('closeVideoModal');
-  if (!modal) return;
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeVideoModal);
-  }
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeVideoModal();
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('open')) {
-      closeVideoModal();
-    }
-  });
-}
-
-function openVideoModal(videoId, title) {
-  const modal = document.getElementById('videoModalOverlay');
-  const iframe = document.getElementById('videoModalIframe');
-  const titleEl = document.getElementById('videoModalTitleText');
-
-  if (!modal || !iframe) return;
-
-  if (titleEl && title) {
-    titleEl.textContent = title;
-  }
-
-  // Carica il video originale con autoplay
-  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-  modal.classList.add('open');
-  modal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeVideoModal() {
-  const modal = document.getElementById('videoModalOverlay');
-  const iframe = document.getElementById('videoModalIframe');
-
-  if (!modal) return;
-
-  // Scarica l'iframe per arrestare immediatamente l'audio del video
-  if (iframe) {
-    iframe.src = '';
-  }
-
-  modal.classList.remove('open');
-  modal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
 }
 
 /* ==========================================================================
@@ -637,13 +557,13 @@ const POWER_TIERS = [
   {
     min: 850000,
     max: 2200000,
-    rank: "Super Saiyan Risvegliato a 450G (Saga Androidi)",
+    rank: "Super Saiyan Risvegliato (Saga degli Androidi)",
     icon: "zap",
     badgeClass: "rank-tier-5",
     borderColor: "#eab308",
     barGradient: "linear-gradient(90deg, #ca8a04, #fde047)",
     verdict: (p) =>
-      `«INCREDIBILE... <strong>${p.toLocaleString('it-IT')}</strong> punti Ki! La barriera dorata è crollata! L'addestramento spietato a 450 volte la gravità tra le meteore dello spazio profondo ha finalmente acceso la fiamma del Super Saiyan nelle tue vene. Gli Androidi impareranno a temere il Principe, ma guai ad adagiarsi: il bio-androide Cell si sta evolvendo!»`
+      `«INCREDIBILE... <strong>${p.toLocaleString('it-IT')}</strong> punti Ki! La barriera dorata è crollata! L'addestramento spietato nello spazio profondo ha finalmente acceso la fiamma del Super Saiyan nelle tue vene. Gli Androidi impareranno a temere il Principe, ma guai ad adagiarsi: il bio-androide Cell si sta evolvendo!»`
   },
   {
     min: 2200000,
@@ -1028,7 +948,6 @@ document.addEventListener('DOMContentLoaded', () => {
   new KiCanvasSystem('kiCanvas');
 
   setupMobileDrawer();
-  setupVideoModal();
   setupGravityChamber();
   setupDailyQuote();
   setupSearchAndFilters();

@@ -62,19 +62,19 @@
     </text>
 
     <!-- Subtitle / Headline -->
-    <text x="0" y="235" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">
-      «IL MIO ORGOGLIO MI IMPEDISCE
+    <text x="0" y="235" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+      «LO FARÒ PER BULMA, PER IL PICCOLO TRUNKS...
     </text>
-    <text x="0" y="285" font-family="system-ui, -apple-system, sans-serif" font-size="38" font-weight="900" fill="url(#goldText)" filter="url(#auraGlow)">
-      DI ESEGUIRE I TUOI ORDINI!»
+    <text x="0" y="285" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="900" fill="url(#goldText)" filter="url(#auraGlow)">
+      E ANCHE PER TE, KAKAROTH!»
     </text>
 
     <!-- Description -->
     <text x="0" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#94a3b8">
-      La parabola del guerriero indomabile: disciplina, camera gravitazionale a 450G,
+      La parabola del guerriero indomabile: il sacrificio supremo di Majin Bu,
     </text>
     <text x="0" y="370" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#94a3b8">
-      il sacrificio di Majin Bu e la scalata per superare ogni limite.
+      l'eredità contro Toppo e la scalata per superare ogni limite.
     </text>
 
     <!-- Bottom Metadata -->
