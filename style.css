@@ -2108,8 +2108,27 @@ body {
   margin: 0.65rem 0;
 }
 
-.modal-body li {
-  margin-bottom: 0.4rem;
+.legal-email-link,
+.legal-banner-link,
+.footer-disclaimer-card a,
+.modal-body a {
+  color: var(--gold-light);
+  text-decoration: underline;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.legal-email-link:hover,
+.legal-banner-link:hover,
+.footer-disclaimer-card a:hover,
+.modal-body a:hover {
+  color: #ffffff;
+  text-decoration-color: var(--ki-blue);
+}
+
+.legal-section {
+  scroll-margin-top: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .modal-footer {

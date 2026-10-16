@@ -790,13 +790,20 @@ function setupLegalModal() {
   const openPrivacyBtn = document.getElementById('openPrivacyBtn');
   const openCookieBtn = document.getElementById('openCookieBtn');
   const openCopyrightBtn = document.getElementById('openCopyrightBtn');
+  const cookieBannerLink = document.getElementById('cookieBannerLink');
 
   if (!modalOverlay) return;
 
-  function openModal() {
+  function openModal(targetId) {
     modalOverlay.classList.add('open');
     modalOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    if (typeof targetId === 'string') {
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        setTimeout(() => targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+      }
+    }
   }
 
   function closeModal() {
@@ -805,9 +812,10 @@ function setupLegalModal() {
     document.body.style.overflow = '';
   }
 
-  if (openPrivacyBtn) openPrivacyBtn.addEventListener('click', openModal);
-  if (openCookieBtn) openCookieBtn.addEventListener('click', openModal);
-  if (openCopyrightBtn) openCopyrightBtn.addEventListener('click', openModal);
+  if (openPrivacyBtn) openPrivacyBtn.addEventListener('click', () => openModal('legal-privacy'));
+  if (openCookieBtn) openCookieBtn.addEventListener('click', () => openModal('legal-cookies'));
+  if (openCopyrightBtn) openCopyrightBtn.addEventListener('click', () => openModal('legal-copyright'));
+  if (cookieBannerLink) cookieBannerLink.addEventListener('click', () => openModal('legal-cookies'));
 
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
   if (dismissBtn) dismissBtn.addEventListener('click', closeModal);
