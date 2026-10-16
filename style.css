@@ -323,6 +323,28 @@ body {
   transform: translateY(-1px);
 }
 
+.nav-github-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: rgba(14, 21, 48, 0.85);
+  border: 1px solid var(--border-subtle);
+  color: var(--gold-light);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.nav-github-link:hover, .nav-github-link:focus-visible {
+  background: rgba(251, 191, 36, 0.2);
+  border-color: var(--gold-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.45);
+}
+
 /* Mobile Toggle Hamburger */
 .mobile-toggle {
   display: none;
