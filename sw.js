@@ -1,11 +1,11 @@
 // sw.js – Service Worker per Vegeta: Il Principe dei Saiyan PWA
 // Strategia: Network-First per freschezza assoluta, con Cache Fallback per offline
 
-const CACHE_NAME = 'vegeta-pwa-v13';
+const CACHE_NAME = 'vegeta-pwa-v14';
 const STATIC_ASSETS = [
   '/',
   '/index.html?v=2.2.0',
-  '/style.css?v=2.2.0',
+  '/style.css?v=2.3.0',
   '/script.js?v=2.2.0',
   '/quotes.json?v=2.2.0',
   '/manifest.json',

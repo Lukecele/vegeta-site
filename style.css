@@ -1768,6 +1768,7 @@ body {
   gap: 0.35rem;
 }
 
+.video-info h3,
 .video-info h4 {
   font-family: var(--font-serif);
   font-size: 1.15rem;
@@ -2035,6 +2036,7 @@ body {
 .tc-icon.gold { color: var(--gold-primary); }
 .tc-icon.cyan { color: var(--ki-blue); }
 
+.tc-header h3,
 .tc-header h4 {
   font-family: var(--font-serif);
   font-size: 1.08rem;
@@ -2159,6 +2161,7 @@ body {
   margin-bottom: 2.5rem;
 }
 
+.footer-disclaimer-card h3,
 .footer-disclaimer-card h5 {
   font-size: 0.92rem;
   color: #ffffff;
@@ -2292,8 +2295,10 @@ body {
   flex-shrink: 0;
 }
 
-.cookie-text h4 {
+.cookie-text h4,
+.cookie-text .cookie-title {
   font-size: 0.98rem;
+  font-weight: 700;
   color: #ffffff;
   margin-bottom: 0.35rem;
 }
@@ -2765,4 +2770,17 @@ body {
     font-size: 0.78rem;
     padding: 0.5rem 0.25rem;
   }
+}
+
+/* SEO & Accessibility Hidden Headings */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
