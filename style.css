@@ -857,6 +857,21 @@ body {
   color: #ffffff;
 }
 
+.quote-saiyan-line.dialogue-middle {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--text-sub);
+  padding: 0.45rem 0;
+  border-top: 1px dashed rgba(251, 191, 36, 0.2);
+}
+
+.dialogue-reply {
+  color: #a5f3fc;
+  font-style: italic;
+  display: inline-block;
+  margin: 0.2rem 0;
+}
+
 .quote-saiyan-line.final-shout {
   font-size: 1.15rem;
   color: #ffffff;
@@ -1769,6 +1784,71 @@ body {
   margin: 0;
 }
 
+.video-quote-box {
+  background: rgba(5, 8, 20, 0.6);
+  border-left: 3px solid var(--gold-primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.85rem 1rem;
+  margin: 0.85rem 0;
+}
+
+.video-quote-text {
+  font-family: var(--font-royal);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #ffffff;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.video-context-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 0.85rem;
+}
+
+.video-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 0.85rem;
+}
+
+.video-empty-state {
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background: rgba(14, 21, 48, 0.5);
+  border-radius: var(--radius-lg);
+  border: 1px dashed rgba(251, 191, 36, 0.35);
+  margin-top: 1.5rem;
+}
+
+.video-empty-state .empty-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+}
+
+.video-empty-state h3 {
+  font-family: var(--font-royal);
+  color: #ffffff;
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.video-empty-state p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 460px;
+  margin: 0 auto 1.5rem;
+}
+
 .video-yt-direct-btn {
   display: inline-flex;
   align-items: center;
@@ -2509,6 +2589,41 @@ body {
   }
   .saiyan-subhead {
     font-size: 0.98rem;
+  }
+
+  /* Video Grid & Cards Mobile Polish */
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .video-card {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .video-info {
+    padding: 1.15rem 0.85rem;
+  }
+  .video-quote-box {
+    padding: 0.75rem 0.85rem;
+    margin: 0.75rem 0;
+  }
+  .video-quote-text {
+    font-size: 0.9rem;
+  }
+  .video-context-desc {
+    font-size: 0.84rem;
+  }
+  .video-card-actions {
+    gap: 0.4rem;
+  }
+  .btn-card-action {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.78rem;
+  }
+  .filter-btn {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.82rem;
   }
 
   /* Gravity Chamber & Scouter Mobile Optimization */

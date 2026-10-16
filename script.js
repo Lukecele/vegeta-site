@@ -23,7 +23,7 @@ if ('speechSynthesis' in window) {
 if ('caches' in window) {
   caches.keys().then((keys) => {
     keys.forEach((key) => {
-      if (key !== 'vegeta-pwa-v8') {
+      if (key !== 'vegeta-pwa-v9') {
         console.log('[Cache Purge] Rimuovo cache obsoleta:', key);
         caches.delete(key);
       }
@@ -139,9 +139,19 @@ class KiCanvasSystem {
    ========================================================================== */
 const FALLBACK_QUOTES = [
   {
+    quote: "Trunks... stammi a sentire: da quando sei nato non ti ho mai stretto a me, vero? Lascia che ti abbracci... Abbi cura di tua madre. Per distruggerti davvero dovrò fare in modo che tu non possa più ricomporti! Tra non molto non rimarrà nulla di te! Lo farò per Bulma... e per il piccolo Trunks... E anche per te, Kakaroth!",
+    context: "Saga di Majin Bu (Ep. 237) – L'abbraccio commovente a Trunks, il confronto con Junior sull'aldilà e l'esplosione cosmica contro Majin Bu (voce storica di Gianluca Iacono).",
+    category: "Saga di Majin Bu",
+    saga: "Saga di Majin Bu",
+    icon: "heart",
+    powerLevel: "Incalcolabile",
+    videoId: "wfD5-VNr6hs",
+    videoTitle: "Il Sacrificio di Majin Vegeta (Scena Completa HD ITA)"
+  },
+  {
     quote: "Io sono il principe dei guerrieri Saiyan, non so se mi spiego! Non mi lascio comandare da un essere patetico come te! Anche se il mio corpo e la mia mente sono sotto il tuo controllo, il mio orgoglio mi impedisce di eseguire i tuoi ordini! Sono stato chiaro?!",
-    context: "Saga di Majin Bu (1994) – A Babidi che tenta di imporgli con la magia di uccidere il Kaiohshin.",
-    category: "Orgoglio & Dignità",
+    context: "Saga di Majin Bu (1994) – A Babidi che tenta di imporgli con la magia nera di uccidere il Kaiohshin.",
+    category: "Saga di Majin Bu",
     saga: "Saga di Majin Bu",
     icon: "flame",
     powerLevel: "100.000.000+",
@@ -149,39 +159,39 @@ const FALLBACK_QUOTES = [
     videoTitle: "Vegeta si ribella a Babidi – Doppiaggio Storico ITA"
   },
   {
-    quote: "Trunks... stammi a sentire: da quando sei nato non ti ho mai stretto a me, vero? Lascia che ti abbracci... Abbi cura di tua madre.",
-    context: "Saga di Majin Bu (1994) – L'abbraccio commovente a Trunks prima di farlo svenire per metterlo in salvo dall'esplosione.",
-    category: "La Famiglia & L'Evoluzione",
-    saga: "Saga di Majin Bu",
-    icon: "heart",
-    powerLevel: "Amore di Padre",
-    videoId: "m246vcU1vl4",
-    videoTitle: "L'abbraccio a Trunks e il Sacrificio di Majin Vegeta – Doppiaggio Storico ITA"
+    quote: "Siete stupiti, eh? Il mio cuore era sereno e anche estremamente puro: malvagità allo stato puro, se preferisci! Il mio unico desiderio era quello di diventare più forte: così ho continuato ad allenarmi, e alla fine ho raggiunto il mio scopo! Chissà se anche un cyborg come te è capace di tremare dalla paura! Sai che ti dico, palla di lardo? Faresti meglio a rifare i conti!",
+    context: "Saga degli Androidi (1992) – La prima trasformazione in Super Saiyan e il Big Bang Attack che annienta l'Androide 19.",
+    category: "Saga di Cell & Androidi",
+    saga: "Saga degli Androidi",
+    icon: "zap",
+    powerLevel: "Super Saiyan",
+    videoId: "KaMvJaBRAuc",
+    videoTitle: "Vegeta si trasforma in Super Saiyan & sfida l'Androide 19 – HD ITA"
   },
   {
-    quote: "Per distruggerti davvero dovrò fare in modo che tu non possa più ricomporti! Tra non molto non rimarrà nulla di te! Lo farò per Bulma... e per il piccolo Trunks... E anche per te, Kakaroth!",
-    context: "Saga di Majin Bu (1994) – Le ultime parole prima dell'esplosione suprema per salvare la Terra e coloro che ha imparato ad amare.",
-    category: "Il Sacrificio di Majin Bu",
-    saga: "Saga di Majin Bu",
-    icon: "heart",
-    powerLevel: "Incalcolabile",
-    videoId: "m246vcU1vl4",
-    videoTitle: "Il Sacrificio di Majin Vegeta – Doppiaggio Storico ITA"
+    quote: "Io non sono un semplice Super Saiyan... Io sono SUPER VEGETA! Sarai anche fortissimo come dici, ma non credo proprio che riuscirai a fermare questo colpo! Chi pensi di impressionare?! Aspetta che ti risponda a modo mio... questo non è tutto: aspetta che ti faccia l'ultima sorpresa! LAMPO FINALE!",
+    context: "Saga di Cell (1992) – Il caricamento del devastante Lampo Finale (Final Flash) che squarcia il corpo di Perfect Cell.",
+    category: "Saga di Cell & Androidi",
+    saga: "Saga di Cell",
+    icon: "sparkles",
+    powerLevel: "Dai Ni Dankai",
+    videoId: "m6NwuTNxDZs",
+    videoTitle: "Super Vegeta e il Lampo Finale contro Perfect Cell – HD ITA"
   },
   {
-    quote: "Devo ammetterlo: sei veramente straordinario, Kakaroth! Majin Bu è un avversario contro cui non posso combattere: l'unico che può batterlo sei tu! All'inizio pensavo che la tua forza derivasse dal fatto che forse avevi qualcuno da proteggere... Ma se così fosse dovrei essere diventato come te, perché ora anch'io ho due persone da proteggere! Tu invece sei diverso, Kakaroth... lo sei sempre stato! Comunque, in bocca al lupo: SEI TU IL NUMERO UNO!",
-    context: "Saga di Kid Bu (1995) – Episodio 280, monologo interiore sul pianeta dei Kaiohshin osservando Goku combattere contro Kid Bu.",
-    category: "L'Eterna Rivalità con Kakaroth",
+    quote: "Io combattevo per il gusto di farlo, per divertimento... Avevo sete di potere, volevo che tutti mi temessero. Ma lui... lui combatteva per proteggere qualcosa, non per vincere. Devo ammetterlo: sei veramente straordinario, Kakaroth! SEI TU IL NUMERO UNO!",
+    context: "Saga di Kid Bu (Ep. 280) – Lo storico monologo interiore sul pianeta dei Kaiohshin, riconoscendo con nobiltà la grandezza di Goku.",
+    category: "Saga di Majin Bu",
     saga: "Saga di Majin Bu",
     icon: "trophy",
     powerLevel: "Supremo",
-    videoId: "RlfTte3V_Ts",
-    videoTitle: "La Confessione di Vegeta: «Sei tu il numero uno!» – Doppiaggio Storico ITA"
+    videoId: "YzWjmNV9kpk",
+    videoTitle: "La Confessione di Vegeta: «Sei tu il numero uno!» – HD ITA"
   },
   {
     quote: "Un guerriero di infimo livello non potrà mai superare l'élite dei Saiyan! Ti ridurrò in polvere insieme a questo pianeta: CANNONE GALICK!",
-    context: "Saga dei Saiyan (1989) – Lo scontro leggendario sulla Terra contro la Kamehameha quadrupla di Goku.",
-    category: "Orgoglio & Dignità",
+    context: "Saga dei Saiyan (1989) – Il primo scontro mortale sulla Terra contro la Kamehameha quadrupla di Goku.",
+    category: "Saga di Namecc & Saiyan",
     saga: "Saga dei Saiyan",
     icon: "crosshair",
     powerLevel: "24.000",
@@ -189,72 +199,34 @@ const FALLBACK_QUOTES = [
     videoTitle: "Cannone Galick contro Kamehameha – Doppiaggio Storico ITA"
   },
   {
-    quote: "Siete stupiti, eh? Il mio cuore era sereno e anche estremamente puro: malvagità allo stato puro, se preferisci! Il mio unico desiderio era quello di diventare più forte: così ho continuato ad allenarmi, e alla fine ho raggiunto il mio scopo!",
-    context: "Saga degli Androidi (1992) – La spiegazione del risveglio del Super Saiyan nello spazio profondo prima di annientare l'Androide 19.",
-    category: "Super Saiyan & Limiti",
-    saga: "Saga degli Androidi",
-    icon: "zap",
-    powerLevel: "Super Saiyan",
-    videoId: "KaMvJaBRAuc",
-    videoTitle: "Vegeta si trasforma per la prima volta in Super Saiyan – Doppiaggio Storico ITA"
-  },
-  {
-    quote: "Chissà se anche un cyborg come te è capace di tremare dalla paura! Sai che ti dico, palla di lardo? Faresti meglio a rifare i conti!",
-    context: "Saga degli Androidi (1992) – La beffa all'Androide 19 prima di spezzargli le braccia e polverizzarlo col Big Bang Attack.",
-    category: "Allenamento & Determinazione",
-    saga: "Saga degli Androidi",
-    icon: "zap",
-    powerLevel: "80.000.000",
-    videoId: "KaMvJaBRAuc",
-    videoTitle: "Vegeta sfida l'Androide 19 – Doppiaggio Storico ITA"
-  },
-  {
-    quote: "Io non sono un semplice Super Saiyan... Io sono SUPER VEGETA!",
-    context: "Saga di Cell (1992) – All'uscita dalla Stanza dello Spirito e del Tempo, dominando Semi-Perfect Cell.",
-    category: "Super Saiyan & Limiti",
-    saga: "Saga di Cell",
-    icon: "shield",
-    powerLevel: "Dai Ni Dankai",
-    videoId: "m6NwuTNxDZs",
-    videoTitle: "Super Vegeta contro Perfect Cell – Doppiaggio Storico ITA"
-  },
-  {
-    quote: "Sarai anche fortissimo come dici, ma non credo proprio che riuscirai a fermare questo colpo! Chi pensi di impressionare?! Aspetta che ti risponda a modo mio... questo non è tutto: aspetta che ti faccia l'ultima sorpresa! LAMPO FINALE!",
-    context: "Saga di Cell (1992) – Il caricamento del devastante Lampo Finale (Final Flash) contro Perfect Cell.",
-    category: "Super Saiyan & Limiti",
-    saga: "Saga di Cell",
-    icon: "sparkles",
-    powerLevel: "Massima Potenza",
-    videoId: "m6NwuTNxDZs",
-    videoTitle: "Il Lampo Finale (Final Flash) contro Perfect Cell – Doppiaggio Storico ITA"
-  },
-  {
     quote: "Noi guerrieri Saiyan diventiamo più forti ogni volta che sfioriamo la morte e riusciamo a salvarci! Più veniamo feriti, più il nostro potere combattivo cresce quando ci riprendiamo. È questa la nostra vera natura!",
-    context: "Saga di Namecc (1991) – La spiegazione dello Zenkai Power a Zarbon dopo essere guarito dalle ferite.",
-    category: "Allenamento & Determinazione",
+    context: "Saga di Namecc (1991) – La spiegazione del segreto dello Zenkai Power a Zarbon dopo essere guarito dalle ferite.",
+    category: "Saga di Namecc & Saiyan",
     saga: "Saga di Namecc",
     icon: "target",
-    powerLevel: "Zenkai Boost"
+    powerLevel: "Zenkai Boost",
+    videoId: "Ldkb_bZ41-g",
+    videoTitle: "Vegeta rivela lo Zenkai Power contro Zarbon – HD ITA"
   },
   {
     quote: "Cosa hai fatto?! Cosa hai fatto?! COSA HAI FATTO ALLA MIA BULMAAAAA?!",
-    context: "Dragon Ball Z: La Battaglia degli Dei (2013) – La furia cieca quando il Dio della Distruzione Beerus colpisce Bulma con uno schiaffo.",
-    category: "La Famiglia & L'Evoluzione",
+    context: "Dragon Ball Z: La Battaglia degli Dei (2013) – La rabbia cieca quando Beerus colpisce Bulma: l'onore della famiglia supera ogni terrore verso gli dei.",
+    category: "Dragon Ball Super",
     saga: "Dragon Ball Super",
     icon: "flame",
     powerLevel: "Rabbia Divina",
     videoId: "hesiDXQuUP4",
-    videoTitle: "La Furia contro Beerus: «Cosa hai fatto alla mia Bulma!» – Doppiaggio Storico ITA"
+    videoTitle: "La Furia contro Beerus: «Cosa hai fatto alla mia Bulma!» – HD ITA"
   },
   {
     quote: "Io non rinuncerò mai a ciò che sono! Non butterò via il mio orgoglio per ottenere un potere a buon mercato! Manterrò la promessa fatta a Cabba con la mia sola forza!",
-    context: "Torneo del Potere (2018) – Contro Toppo Dio della Distruzione, sbloccando il Super Saiyan Blue Evolution in nome del suo onore.",
-    category: "Orgoglio & Dignità",
+    context: "Torneo del Potere (2018) – Contro Toppo Dio della Distruzione, sbloccando il Blue Evolution e richiamando l'Esplosione Finale per vincere e sopravvivere.",
+    category: "Dragon Ball Super",
     saga: "Dragon Ball Super",
     icon: "crown",
     powerLevel: "Blue Evolution",
     videoId: "X3lleuQZwCA",
-    videoTitle: "Vegeta vs Toppo: Super Saiyan Blue Evolution – Doppiaggio Storico ITA"
+    videoTitle: "Vegeta vs Toppo: Super Saiyan Blue Evolution – HD ITA"
   }
 ];
 
@@ -263,7 +235,7 @@ let activeCategoryFilter = 'all';
 let searchQuery = '';
 
 /**
- * Caricamento asincrono con fallback garantito
+ * Caricamento asincrono del database citazioni con fallback
  */
 async function loadQuotes() {
   try {
@@ -277,140 +249,21 @@ async function loadQuotes() {
   } catch (e) {
     console.info('[Quotes] Utilizzo del database locale di fallback integrato:', e.message);
   }
-  renderQuotes();
-}
-
-/**
- * Renderizza le card delle citazioni con filtri, ricerca e scene autentiche
- */
-function renderQuotes() {
-  const container = document.getElementById('quote-list');
-  if (!container) return;
-
-  const filtered = allQuotes.filter((item) => {
-    const matchesCategory =
-      activeCategoryFilter === 'all' || item.category === activeCategoryFilter;
-
-    const query = searchQuery.trim().toLowerCase();
-    const matchesSearch =
-      query === '' ||
-      item.quote.toLowerCase().includes(query) ||
-      item.context.toLowerCase().includes(query) ||
-      item.saga.toLowerCase().includes(query) ||
-      item.category.toLowerCase().includes(query);
-
-    return matchesCategory && matchesSearch;
-  });
-
-  if (filtered.length === 0) {
-    container.innerHTML = `
-      <div class="quotes-empty-state" style="grid-column: 1 / -1; text-align: center; padding: 3rem 1.5rem; background: rgba(14,21,48,0.5); border-radius: 16px; border: 1px dashed rgba(251,191,36,0.3);">
-        <i data-lucide="search-x" style="width: 48px; height: 48px; color: var(--gold-light); margin-bottom: 1rem;"></i>
-        <h3 style="font-family: var(--font-royal); color: #fff; margin-bottom: 0.5rem;">Nessuna massima Saiyan trovata</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 480px; margin: 0 auto;">Nessuna citazione corrisponde a «<strong>${escapeHtml(searchQuery)}</strong>». Prova con termini come <em>orgoglio</em>, <em>Kakaroth</em>, <em>Cell</em> o <em>Trunks</em>.</p>
-      </div>
-    `;
-    if (window.lucide) lucide.createIcons();
-    return;
-  }
-
-  container.innerHTML = filtered
-    .map((item, index) => {
-      const iconName = item.icon || 'quote';
-
-      return `
-        <article class="quote-card" data-index="${index}">
-          <div class="qc-header">
-            <div class="qc-badge-group">
-              <span class="qc-saga-tag">${escapeHtml(item.saga)}</span>
-              <span class="qc-power-tag">${escapeHtml(item.powerLevel || 'Saiyan')}</span>
-            </div>
-            <div class="qc-icon-wrap" aria-hidden="true">
-              <i data-lucide="${iconName}"></i>
-            </div>
-          </div>
-
-          <blockquote class="qc-body">
-            «${escapeHtml(item.quote)}»
-          </blockquote>
-
-          <p class="qc-context">
-            ${escapeHtml(item.context)}
-          </p>
-
-          <div class="qc-actions">
-            ${item.videoId ? `
-              <div class="qc-video-actions">
-                <a href="#video-${escapeAttribute(item.videoId)}" 
-                   class="btn-card-action btn-watch-scene" 
-                   data-video-id="${escapeAttribute(item.videoId)}" 
-                   title="Guarda la scena originale in HD ITA con Gianluca Iacono">
-                  <i data-lucide="play-circle"></i>
-                  <span>Video ITA</span>
-                </a>
-                <a href="https://www.youtube.com/watch?v=${escapeAttribute(item.videoId)}" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="btn-card-action btn-yt-direct" 
-                   title="Apri su YouTube in nuova scheda">
-                  <i data-lucide="external-link"></i>
-                </a>
-              </div>
-            ` : '<div class="qc-video-actions"></div>'}
-
-            <div class="qc-share-actions">
-              <button class="btn-card-action btn-copy-quote" data-quote="${escapeAttribute(item.quote)}" data-context="${escapeAttribute(item.context)}" title="Copia citazione">
-                <i data-lucide="copy"></i>
-                <span>Copia</span>
-              </button>
-
-              <button class="btn-card-action btn-share-quote" data-quote="${escapeAttribute(item.quote)}" data-context="${escapeAttribute(item.context)}" title="Condividi">
-                <i data-lucide="share-2"></i>
-                <span>Condividi</span>
-              </button>
-            </div>
-          </div>
-        </article>
-      `;
-    })
-    .join('');
-
-  if (window.lucide) {
-    lucide.createIcons();
-  }
 }
 
 /* ==========================================================================
-   4. ACTIONS: COPIA, CONDIVISIONE & SCORRIMENTO A SCENE REALI (HD ITA)
+   4. ACTIONS: COPIA & CONDIVISIONE CITAZIONI DALLE SCENE CULT
    ========================================================================== */
 function setupQuoteActions() {
-  const container = document.getElementById('quote-list');
-  if (!container) return;
+  const grid = document.getElementById('videoGrid');
+  if (!grid) return;
 
-  container.addEventListener('click', (e) => {
-    // 1. Guarda Scena Originale HD ITA (scorrimento fluido alla card con highlight pulse)
-    const watchBtn = e.target.closest('.btn-watch-scene');
-    if (watchBtn) {
-      const videoId = watchBtn.getAttribute('data-video-id');
-      if (videoId) {
-        const targetCard = document.getElementById(`video-${videoId}`);
-        if (targetCard) {
-          e.preventDefault();
-          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          targetCard.classList.remove('highlight-pulse');
-          void targetCard.offsetWidth; // Trigger reflow per riavviare l'animazione
-          targetCard.classList.add('highlight-pulse');
-          showToast('Scorrendo alla scena cult HD ITA...', 'play-circle');
-          return;
-        }
-      }
-    }
-
-    // 2. Copia negli appunti
+  grid.addEventListener('click', (e) => {
+    // 1. Copia citazione negli appunti
     const copyBtn = e.target.closest('.btn-copy-quote');
     if (copyBtn) {
-      const quote = copyBtn.getAttribute('data-quote');
-      const context = copyBtn.getAttribute('data-context');
+      const quote = copyBtn.getAttribute('data-quote') || '';
+      const context = copyBtn.getAttribute('data-context') || '';
       const fullText = `«${quote}»\n– ${context}\n\n[Vegeta // Il Principe dei Saiyan: https://vegeta-site.vercel.app]`;
 
       navigator.clipboard.writeText(fullText).then(() => {
@@ -421,11 +274,11 @@ function setupQuoteActions() {
       return;
     }
 
-    // 3. Condividi con Web Share API o Fallback
+    // 2. Condividi con Web Share API o Fallback
     const shareBtn = e.target.closest('.btn-share-quote');
     if (shareBtn) {
-      const quote = shareBtn.getAttribute('data-quote');
-      const context = shareBtn.getAttribute('data-context');
+      const quote = shareBtn.getAttribute('data-quote') || '';
+      const context = shareBtn.getAttribute('data-context') || '';
       if (navigator.share) {
         navigator.share({
           title: 'Vegeta – Il Principe dei Saiyan',
@@ -444,8 +297,11 @@ function setupQuoteActions() {
 }
 
 function copyToClipboardDirect(text) {
-  navigator.clipboard.writeText(text).then(() => {
+  const fullText = `${text}\n\n[Vegeta // Il Principe dei Saiyan: https://vegeta-site.vercel.app]`;
+  navigator.clipboard.writeText(fullText).then(() => {
     showToast('Testo copiato per la condivisione!', 'share-2');
+  }).catch(() => {
+    showToast('Impossibile copiare il testo', 'alert-circle');
   });
 }
 
@@ -736,9 +592,49 @@ function setupDailyQuote() {
 /* ==========================================================================
    8. FILTRI CATEGORIA & RICERCA IN TEMPO REALE
    ========================================================================== */
+function filterVideoCards() {
+  const cards = document.querySelectorAll('#videoGrid .video-card');
+  const emptyState = document.getElementById('videoEmptyState');
+  const emptyStateMsg = document.getElementById('emptyStateMsg');
+  const query = searchQuery.trim().toLowerCase();
+
+  let visibleCount = 0;
+
+  cards.forEach((card) => {
+    const cardCategory = card.getAttribute('data-category') || '';
+    const matchesCategory = (activeCategoryFilter === 'all' || cardCategory === activeCategoryFilter);
+
+    const textContent = (card.innerText || '').toLowerCase();
+    const matchesSearch = (query === '' || textContent.includes(query));
+
+    if (matchesCategory && matchesSearch) {
+      card.style.display = '';
+      visibleCount++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  if (emptyState) {
+    if (visibleCount === 0) {
+      emptyState.style.display = 'block';
+      if (emptyStateMsg) {
+        if (query) {
+          emptyStateMsg.innerHTML = `Nessuna scena corrisponde a «<strong>${escapeHtml(query)}</strong>». Prova con termini come <em>Babidi</em>, <em>Cell</em>, <em>Kakaroth</em> o <em>Trunks</em>.`;
+        } else {
+          emptyStateMsg.textContent = `Nessuna scena presente per la categoria selezionata.`;
+        }
+      }
+    } else {
+      emptyState.style.display = 'none';
+    }
+  }
+}
+
 function setupSearchAndFilters() {
   const searchInput = document.getElementById('quoteSearch');
   const clearBtn = document.getElementById('clearSearchBtn');
+  const resetBtn = document.getElementById('resetVideoFilterBtn');
   const filterBtns = document.querySelectorAll('#categoryFilters .filter-btn');
 
   if (searchInput) {
@@ -747,7 +643,7 @@ function setupSearchAndFilters() {
       if (clearBtn) {
         clearBtn.style.opacity = searchQuery.length > 0 ? '1' : '0.4';
       }
-      renderQuotes();
+      filterVideoCards();
     });
   }
 
@@ -757,7 +653,24 @@ function setupSearchAndFilters() {
       searchQuery = '';
       clearBtn.style.opacity = '0.4';
       searchInput.focus();
-      renderQuotes();
+      filterVideoCards();
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      searchQuery = '';
+      activeCategoryFilter = 'all';
+      if (searchInput) {
+        searchInput.value = '';
+        if (clearBtn) clearBtn.style.opacity = '0.4';
+      }
+      filterBtns.forEach((b) => {
+        const isAll = b.getAttribute('data-filter') === 'all';
+        b.classList.toggle('active', isAll);
+        b.setAttribute('aria-selected', isAll ? 'true' : 'false');
+      });
+      filterVideoCards();
     });
   }
 
@@ -771,7 +684,7 @@ function setupSearchAndFilters() {
       btn.setAttribute('aria-selected', 'true');
 
       activeCategoryFilter = btn.getAttribute('data-filter') || 'all';
-      renderQuotes();
+      filterVideoCards();
     });
   });
 }
