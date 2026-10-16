@@ -23,7 +23,7 @@ if ('speechSynthesis' in window) {
 if ('caches' in window) {
   caches.keys().then((keys) => {
     keys.forEach((key) => {
-      if (key !== 'vegeta-pwa-v3') {
+      if (key !== 'vegeta-pwa-v4') {
         console.log('[Cache Purge] Rimuovo cache obsoleta:', key);
         caches.delete(key);
       }
@@ -34,7 +34,7 @@ if ('caches' in window) {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register('./sw.js?v=2.0.0')
+      .register('./sw.js?v=2.0.1')
       .then((reg) => {
         console.log('[PWA] Service Worker attivo. Scope:', reg.scope);
         // Forza l'aggiornamento immediato del Service Worker
