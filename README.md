@@ -130,10 +130,11 @@ npx serve vegeta-site
 
 ---
 
-## ⚖️ Note Legali, Proprietà Intellettuale & Diritto d'Autore
+## ⚖️ Note Legali, Licenza Gratuita & Diritto d'Autore
 
-- **Natura del Progetto:** Questo sito web è un'opera no-profit ad uso culturale, artistico, commemorativo e didattico, priva di qualsiasi finalità commerciale o scopo di lucro.
-- **Titolarità del Personaggio e Marchi:** Il personaggio "Vegeta", i nomi correlati ("Dragon Ball", "Saiyan", "Capsule Corp") e i relativi marchi appartengono a **Bird Studio** / **Akira Toriyama Estate**, **Shueisha Inc.** e **Toei Animation Co., Ltd.**. Il richiamo a tali elementi avviene a titolo meramente descrittivo, identificativo e commemorativo (*nominative fair use*).
-- **Diritto di Citazione (Art. 70 L. 633/1941):** Le frasi, i monologhi e i riferimenti narrativi sono riportati in conformità all'art. 70 della Legge 633/1941 sul diritto d'autore e ai principi internazionali del *Fair Use* (17 U.S.C. § 107), per finalità illustrative e di discussione culturale.
-- **Incorporamento Video (Iframe):** I video incorporati sono riprodotti tramite player ufficiale YouTube in conformità alla giurisprudenza della Corte di Giustizia dell'Unione Europea (*sentenze Svensson C-466/12 e BestWater C-348/13*). Nessun file multimediale è ospitato illegalmente sui server del sito.
-- **Notice & Take Down:** I titolari dei diritti possono richiedere in qualsiasi momento la modifica o rimozione tempestiva scrivendo a `luca.celebrano1@gmail.com`.
+- **Licenza di Utilizzo Gratuito (MIT License)**: Il codice sorgente dell'interfaccia web, gli script del simulatore di gravità e lo Scouter HUD sono distribuiti gratuitamente sotto [Licenza MIT](LICENSE). Chiunque è libero di consultare, studiare, copiare, biforcare (*fork*) e riutilizzare il codice per scopi legittimi e non commerciali.
+- **Natura del Progetto (100% No-Profit)**: Questo sito web è un'opera no-profit ad uso culturale, artistico, commemorativo e didattico, priva di qualsiasi finalità commerciale o scopo di lucro.
+- **Assoluta Assenza di Rivendicazione di Copyright su Dragon Ball**: Il personaggio "Vegeta", la saga di "Dragon Ball", "Saiyan", "Capsule Corp", i disegni e tutti i marchi appartengono inderogabilmente ed esclusivamente a **Bird Studio** / **Akira Toriyama Estate**, **Shueisha Inc.** e **Toei Animation Co., Ltd.**. Sanctuary / Vegeta-Site e il suo autore **non rivendicano alcun diritto d'autore o proprietà intellettuale** su tali opere.
+- **Diritto di Citazione (Art. 70 L. 633/1941 & Direttiva UE 2001/29/CE)**: Le frasi, i monologhi e i riferimenti narrativi sono riportati in conformità all'art. 70 della Legge 633/1941 sul diritto d'autore e ai principi del *Fair Use*, per finalità illustrative, didattiche e di discussione culturale.
+- **Incorporamento Video (YouTube IFrame API)**: I video sono incorporati tramite player ufficiale YouTube in conformità alla giurisprudenza della Corte di Giustizia dell'Unione Europea (*sentenze Svensson C-466/12 e BestWater C-348/13*). Nessun file multimediale risiede sui server del sito.
+- **Notice & Take Down**: I titolari dei diritti possono richiedere in qualsiasi momento la modifica o rimozione tempestiva scrivendo a `luca.celebrano1@gmail.com` o aprendo una segnalazione su [GitHub Issues](https://github.com/Lukecele/vegeta-site/issues). Per i dettagli legali completi consultare [LEGAL.md](LEGAL.md).

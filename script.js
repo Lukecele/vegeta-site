@@ -784,6 +784,7 @@ function setupLegalModal() {
   const openPrivacyBtn = document.getElementById('openPrivacyBtn');
   const openCookieBtn = document.getElementById('openCookieBtn');
   const openCopyrightBtn = document.getElementById('openCopyrightBtn');
+  const openLicenseBtn = document.getElementById('openLicenseBtn');
   const cookieBannerLink = document.getElementById('cookieBannerLink');
 
   if (!modalOverlay) return;
@@ -809,6 +810,7 @@ function setupLegalModal() {
   if (openPrivacyBtn) openPrivacyBtn.addEventListener('click', () => openModal('legal-privacy'));
   if (openCookieBtn) openCookieBtn.addEventListener('click', () => openModal('legal-cookies'));
   if (openCopyrightBtn) openCopyrightBtn.addEventListener('click', () => openModal('legal-copyright'));
+  if (openLicenseBtn) openLicenseBtn.addEventListener('click', () => openModal('legal-license'));
   if (cookieBannerLink) cookieBannerLink.addEventListener('click', () => openModal('legal-cookies'));
 
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
