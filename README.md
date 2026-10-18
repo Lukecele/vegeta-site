@@ -13,6 +13,10 @@ Un portale web e Progressive Web App (PWA) moderna, immersiva e curata nella per
 
 🌐 **Sito Live su Vercel**: [https://vegeta-site.vercel.app](https://vegeta-site.vercel.app)
 
+> [!TIP]
+> **Ti piace questo portale su Vegeta?**  
+> Se apprezzi la cura grafica, i simulatori e l'archivio audio, **lascia una ⭐ Stella su GitHub** in alto a destra! Supporta il progetto open-source e l'orgoglio Saiyan!
+
 ---
 
 ## ⚡ Caratteristiche Principali & Eccellenza Tecnica
